@@ -1,11 +1,15 @@
+# Agent Trust Protocol (ATP) — W3C Community Group
 
-# Specification 'atp'
+A quantum-safe **identity, trust, and privacy layer for AI agents**. ATP extends the W3C
+[Decentralized Identifiers](https://www.w3.org/TR/did-core/) and
+[Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) data models for autonomous
+agents.
 
-This is the repository for atp. You're welcome to contribute! Let's make the Web rock our socks
-off!
+**Charter:** produce open specifications that fill the **Security and Privacy modules**
+described by the [AI Agent Protocol Community Group](https://www.w3.org/community/agentprotocol/),
+modules currently marked as pending community contribution.
 
-
- ⚠️ **Status: drafts for review — not yet adopted CG Reports.**
+> ⚠️ **Status: drafts for review — not yet adopted CG Reports.**
 > The four specifications below are **input documents** to the Community Group, shared here
 > so members can read and comment on them. They render with an **"Unofficial Draft"**
 > banner. They become Community Group Reports only if and when the group votes to adopt
