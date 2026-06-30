@@ -53,4 +53,4 @@ when adopted as CG Reports.
 
 ---
 
-*Agent Trust Protocol™ — securing the agentic web, one trust relationship at a time.*
+
