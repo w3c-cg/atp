@@ -3,3 +3,50 @@
 
 This is the repository for atp. You're welcome to contribute! Let's make the Web rock our socks
 off!
+
+
+ ⚠️ **Status: drafts for review — not yet adopted CG Reports.**
+> The four specifications below are **input documents** to the Community Group, shared here
+> so members can read and comment on them. They render with an **"Unofficial Draft"**
+> banner. They become Community Group Reports only if and when the group votes to adopt
+> them, at which point they will gain the formal W3C status, copyright, and IPR notices
+> required by the [CG report requirements](https://www.w3.org/community/reports/reqs/).
+
+## Read the specifications
+
+Rendered (via GitHub Pages):
+
+> **https://w3c-cg.github.io/atp/specs/**
+
+| Spec | What it covers |
+|---|---|
+| [did:atp — Quantum-Safe DID Method](https://w3c-cg.github.io/atp/specs/did-atp/) | A DID method binding a classical Ed25519 key and a post-quantum ML-DSA-65 (FIPS 204) key in one hybrid identifier, with deterministic pairwise derivation. Includes published, vendor-neutral test vectors. |
+| [Agent Trust Scoring & Credentials](https://w3c-cg.github.io/atp/specs/atp-trust/) | A deterministic, bounded, fail-closed trust model whose levels are expressible as signed W3C Verifiable Credentials. |
+| [Privacy-First Interaction](https://w3c-cg.github.io/atp/specs/atp-privacy/) | Pairwise (per-relationship) identifiers, Merkle-based selective disclosure, and experimental zero-knowledge range proofs. |
+| [Conformance & Interoperability](https://w3c-cg.github.io/atp/specs/atp-conformance/) | Normative conformance items and a vendor-neutral test-vector format for independent implementations to verify interoperability. |
+
+The specifications are written with [ReSpec](https://respec.org/), a W3C-supported
+specification tool.
+
+## How to give feedback
+
+Please file one **[GitHub issue](https://github.com/w3c-cg/atp/issues)** per topic —
+questions, disagreements, gaps, and editorial nits are all welcome. We're running an
+asynchronous review; there is no need to wait for a meeting to comment.
+
+## Implementation status
+
+These specifications are backed by a reference implementation and a conformance test
+suite. The implementation is being finalized for public review and will be linked here
+once it is ready; until then, the specifications above stand on their own (the did:atp
+spec ships with its own published test vectors).
+
+## License
+
+Specifications will be made available under the
+[W3C Software and Document Notice and License](https://www.w3.org/copyright/software-license/)
+when adopted as CG Reports.
+
+---
+
+*Agent Trust Protocol™ — securing the agentic web, one trust relationship at a time.*
