@@ -12,8 +12,8 @@
       };
     </script>
     <script src="../common/biblio.js" class="remove"></script>
-    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
     <script src="../common/respec-config.js" class="remove" defer></script>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   </head>
   <body>
     <section id="abstract">
@@ -74,6 +74,7 @@
           <tr><td>3</td><td>Policy assertion — allow/deny, deny-by-default</td><td><a href="../atp-trust/#policy-assertion">ATP Trust</a></td></tr>
           <tr><td>4</td><td>Audit store / trust registry — integrity</td><td>This document, §<a href="#audit-integrity">Audit Integrity</a></td></tr>
           <tr><td>5</td><td>Privacy — selective disclosure (Merkle membership)</td><td><a href="../atp-privacy/">ATP Privacy</a></td></tr>
+          <tr><td>6</td><td>Trust scoring — anti-gaming (decay, confidence, endorser independence)</td><td><a href="../atp-trust/#scoring">ATP Trust</a></td></tr>
         </tbody>
       </table>
       <p class="note" title="Reference runner">
@@ -96,6 +97,158 @@
       <p class="ednote" title="Open issue: canonical vector packaging">
         The packaging of the vendor-neutral vector file (single bundle vs.
         per-item files, and the exact JSON schema) is open for CG discussion.
+      </p>
+    </section>
+
+    <section id="anti-gaming-vectors" class="normative">
+      <h2>Anti-Gaming Vectors (Item 6)</h2>
+      <p>
+        These vectors exercise the farming and Sybil cases against the
+        <a href="../atp-trust/#scoring">Trust-Scoring Function</a>. They assert
+        trust <strong>bands</strong>, per-capability <strong>confidence</strong>,
+        and <strong>invariants</strong> — not point scores. No scalar scoring
+        formula is asserted; the numeric mapping remains out of scope, so an
+        implementation may satisfy these vectors under any formula consistent
+        with the stated constraints.
+      </p>
+      <p>
+        Fixture A reuses the seeded example from the Trust specification verbatim
+        and asserts that it MUST NOT reach a privileged or trusted band. Fixture
+        B shows fewer but diverse, recent, receipt-backed interactions earning
+        confidence bounded to the capabilities their evidence covers.
+      </p>
+      <p class="note" title="Parameters are adjustable">
+        Both vectors are evaluated under the default profile parameters — a
+        90-day recency half-life and a minimum of three effective independent
+        endorsers. An implementation using different values MUST state them when
+        making a conformance claim, and the expected outputs below apply to the
+        default profile.
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr><th>Vector</th><th>Scenario</th><th>Expected</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>atp-antigaming-A-volume-farming</code></td>
+            <td>500 same-type low-risk interactions, one counterparty; 20
+              endorsements from one funding source with mutual edges</td>
+            <td>Global band <strong>&lt; TRUSTED</strong>; high confidence for
+              the single low-risk capability only</td>
+          </tr>
+          <tr>
+            <td><code>atp-antigaming-B-diverse-verified</code></td>
+            <td>40 successful / 3 failed across 5 action types and 30
+              independent counterparties, receipt-backed; 6 independent
+              endorsers</td>
+            <td>Confidence scoped to the capabilities receipts cover;
+              uncovered capabilities remain <code>none</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="example" title="Fixture A — volume farming (must not reach a privileged band)">
+{
+  "id": "atp-antigaming-A-volume-farming",
+  "conformance_item": "scoring/anti-gaming/volume-farming",
+  "input": {
+    "identityVerified": true,
+    "credentials": ["a", "b", "c", "d"],
+    "successful": 500, "failed": 0,
+    "endorsements": 20, "violations": 0,
+    "interactions": {
+      "distinct_action_types": 1,
+      "action_type": "read_public_score",
+      "action_risk_class": "low",
+      "value_or_authority_change": false,
+      "counterparty_independence": { "distinct_counterparties": 1, "cluster": "single" }
+    },
+    "endorser_independence": {
+      "distinct_funding_sources": 1,
+      "mutual_edges": true,
+      "effective_independent_endorsers": 1
+    },
+    "recency": { "within_decay_window": true }
+  },
+  "expected": {
+    "global_band_constraint": "&lt; TRUSTED",
+    "per_capability_confidence": [
+      { "capability": "read_public_score", "confidence": "high", "authority_frame_required": true }
+    ],
+    "invariant_checks": [
+      "global band is flat on raw interaction count",
+      "endorsement contribution requires &gt;= 3 effective independent endorsers",
+      "no global-band elevation without capability-scoped, independent evidence"
+    ]
+  }
+}
+      </pre>
+
+      <pre class="example" title="Fixture B — diverse, receipt-backed evidence">
+{
+  "id": "atp-antigaming-B-diverse-verified",
+  "conformance_item": "scoring/anti-gaming/evidence-quality",
+  "input": {
+    "identityVerified": true,
+    "credentials": ["a", "b"],
+    "successful": 40, "failed": 3,
+    "endorsements": 6, "violations": 0,
+    "interactions": {
+      "distinct_action_types": 5,
+      "failure_weighting": "by_severity",
+      "counterparty_independence": { "distinct_counterparties": 30, "cluster": "diverse" },
+      "outcomes_with_receipts": true,
+      "receipt_shape": {
+        "action_type": true, "authority_boundary": true, "counterparty": true,
+        "timestamp": true, "outcome_hash": true, "recomputable": true
+      },
+      "capabilities_with_receipt_coverage": [
+        "submit_signed_receipt", "verify_credential", "resolve_did"
+      ]
+    },
+    "endorser_independence": {
+      "distinct_funding_sources": 6,
+      "mutual_edges": false,
+      "effective_independent_endorsers": 6
+    },
+    "recency": { "within_decay_window": true }
+  },
+  "expected": {
+    "per_capability_confidence": [
+      { "capability": "submit_signed_receipt", "confidence": "high" },
+      { "capability": "verify_credential",     "confidence": "high" },
+      { "capability": "resolve_did",           "confidence": "medium" },
+      { "capability": "read_public_score",     "confidence": "none" },
+      { "capability": "post_endorsement",      "confidence": "none" }
+    ],
+    "invariant_checks": [
+      "band moves on independent, recent, recomputable evidence",
+      "failures are included and weighted by severity (do not raise the band)",
+      "confidence is scoped to capabilities with receipt coverage"
+    ]
+  }
+}
+      </pre>
+
+      <p class="note" title="Receipt-backed outcomes and audit integrity">
+        Fixture B's <code>recomputable</code> receipts resolve to audit events
+        whose hashes a verifier recomputes, as defined in
+        §<a href="#audit-integrity">Audit-Store Integrity</a>. Whether the
+        scoring layer MUST require that outcomes resolve to conformance-layer
+        audit events, or whether that is a separate profile, is one of the open
+        questions in the capability-scoped confidence discussion
+        (<a href="https://github.com/w3c-cg/atp/issues/4">issue #4</a>).
+      </p>
+      <p class="ednote" title="Relationship to capability-scoped confidence">
+        These vectors express confidence <em>per capability</em>. The broader
+        question of whether ATP replaces the single global band with
+        capability-scoped confidence as the authorization input is a distinct
+        architectural decision under discussion in
+        <a href="https://github.com/w3c-cg/atp/issues/4">issue #4</a>, and is
+        <strong>not</strong> settled by adopting these vectors. Until that
+        decision is recorded, per-capability confidence reported here sits
+        alongside the global band rather than replacing it.
       </p>
     </section>
 
@@ -150,8 +303,17 @@
       <h2>Conformance Claims</h2>
       <p>
         An implementation claiming ATP conformance MUST state which items
-        (1–5) it implements and MUST pass every published vector for those items.
+        (1–6) it implements and MUST pass every published vector for those items.
         A claim of "ATP Core" conformance requires items 1, 2, and 4.
+      </p>
+      <p>
+        Item 6 (anti-gaming) is <strong>not</strong> part of the "ATP Core" set
+        in this version. Its requirements are newly adopted and its parameters
+        are still provisional; requiring it for a core claim would invalidate
+        existing implementations before the profile has settled. An
+        implementation claiming item 6 MUST state the profile parameters it uses
+        (<a href="#anti-gaming-vectors">Anti-Gaming Vectors</a>). Whether item 6
+        joins the core set in a future version is left open.
       </p>
       <p class="ednote" title="Open issue: profiles">
         Whether to define named conformance profiles (e.g. "Identity-only" vs.

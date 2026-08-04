@@ -12,16 +12,17 @@
 
   // eslint-disable-next-line no-undef
   window.respecConfig = {
-    // Use "unofficial" until the ATP Community Group is formally registered
-    // with W3C. ReSpec resolves `group` against the W3C API, so setting a
-    // not-yet-registered group (e.g. "atp") would 404 and break the render.
-    // Once the CG is registered, switch to "CG-DRAFT" and add group: "atp".
-    specStatus: "unofficial",
+    // The ATP Community Group is registered with W3C (group 177419,
+    // shortname "atp"), so these render as Draft Community Group Reports.
+    specStatus: "CG-DRAFT",
+    group: "atp",
     shortName: spec.shortName || "atp-spec",
     editors: [
       {
         name: "Larry Lewis",
-        company: "Sovr Labs",
+        // Matches the W3C CG participant record: individual CLA commitment,
+        // affiliated with (but not committing on behalf of) Sovr Inc.
+        company: "Individual CLA commitment (affiliated with Sovr Inc., dba SovrLabs)",
         companyURL: "https://sovrlabs.com",
       },
     ],
@@ -33,9 +34,9 @@
     localBiblio: window.atpBiblio || {},
     subtitle: spec.subtitle || "",
     xref: ["DID-CORE", "VC-DATA-MODEL", "INFRA"],
-    // Input drafts (pre-adoption) render under CC-BY. On CG adoption, switch
-    // specStatus to "CG-DRAFT" and ReSpec applies the W3C Community CLA. Repo-level
-    // licensing (spec contributions under the W3C CLA) lives in LICENSE.md.
-    license: "cc-by",
+    // CG Reports must use the W3C Software and Document License; ReSpec rejects
+    // "cc-by" for W3C specifications. Repo-level licensing (spec contributions
+    // under the W3C Community CLA) lives in LICENSE.md.
+    license: "w3c-software-doc",
   };
 })();

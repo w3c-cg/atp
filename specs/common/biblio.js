@@ -63,4 +63,16 @@ window.atpBiblio = {
     href: "https://www.rfc-editor.org/rfc/rfc9530",
     publisher: "IETF",
   },
+  TRQP: {
+    title: "ToIP Trust Registry Query Protocol (TRQP) v2.0",
+    href: "https://trustoverip.github.io/tswg-trust-registry-protocol/approved/",
+    publisher: "Trust Over IP Foundation (Approved Deliverable)",
+    authors: ["Darrell O'Donnell", "Andor Kesselman", "Drummond Reed"],
+  },
+  "VC-BSL": {
+    title: "Bitstring Status List v1.0",
+    href: "https://www.w3.org/TR/vc-bitstring-status-list/",
+    publisher: "W3C (Recommendation, 15 May 2025)",
+    date: "15 May 2025",
+  },
 };
