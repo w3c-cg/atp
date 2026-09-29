@@ -12,8 +12,8 @@
       };
     </script>
     <script src="../common/biblio.js" class="remove"></script>
-    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
     <script src="../common/respec-config.js" class="remove" defer></script>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   </head>
   <body>
     <section id="abstract">
@@ -115,10 +115,15 @@
         <dt>Bounds</dt>
         <dd>The score MUST lie in [0, 1] and the level MUST be one of the
           values in <a href="#trust-levels">Trust Levels</a>.</dd>
-        <dt>Monotonicity</dt>
-        <dd>Additional successful interactions, endorsements, or
-          <em>verified</em> credentials MUST NOT lower the score; additional
-          failed interactions or violations MUST NOT raise it.</dd>
+        <dt>Monotonicity (at a fixed point in time)</dt>
+        <dd>Evaluated against a fixed evidence set at a fixed instant,
+          additional successful interactions, endorsements, or <em>verified</em>
+          credentials MUST NOT lower the score; additional failed interactions
+          or violations MUST NOT raise it. Monotonicity is scoped <em>within</em>
+          a factor and does not extend across time: because evidence decays
+          (<a href="#recency-decay">Recency Decay</a>), an unchanged evidence set
+          MAY yield a lower score when re-evaluated later. Raw count alone MUST
+          NOT move a score across a band boundary.</dd>
         <dt>Fail-closed credential gating</dt>
         <dd>A candidate credential MUST contribute to the score only after it is
           verified. With no verifier available, candidate credentials MUST be
@@ -130,15 +135,94 @@
         interactions, and net reputation (endorsements minus violations, each
         term capped).
       </p>
+      <p>
+        Counting evidence without regard to its age, its independence, or the
+        conditions under which it was earned makes a score a measure of
+        <em>volume</em> rather than of trustworthiness: an agent that
+        accumulates many cheap, low-risk, successful interactions — or
+        endorsements from colluding peers — would otherwise reach the highest
+        bands. The three requirements below constrain that. Their parameters are
+        seeded starting values, not derived optima, and are adjustable by the
+        Community Group.
+      </p>
+
+      <section id="recency-decay" class="normative">
+        <h3>Recency Decay</h3>
+        <p>
+          Evidence MUST lose weight as it ages. A conforming implementation MUST
+          apply exponential decay to interaction and endorsement evidence with a
+          default half-life of <strong>90 days</strong>: evidence 90 days old
+          contributes half its original weight, and evidence approaching one year
+          contributes near zero. Identity verification and the verified-credential
+          count are <em>not</em> subject to decay; they are re-evaluated against
+          credential expiry and status instead
+          (<a href="#issuer-authorization">Issuer Authorization</a>).
+        </p>
+        <p>
+          The half-life is a profile parameter. An implementation MAY use a
+          different value and MUST state the value it uses when making a
+          conformance claim.
+        </p>
+      </section>
+
+      <section id="evidence-confidence" class="normative">
+        <h3>Confidence and Evidence Sufficiency</h3>
+        <p>
+          A trust level MUST be accompanied by a <dfn>confidence</dfn> signal
+          reflecting the quantity and quality of the evidence behind it, so that
+          a level derived from a handful of interactions is distinguishable from
+          the same level derived from a large, diverse, recent body of evidence.
+          A score computed from insufficient evidence MUST NOT be presented as
+          equivalent to the same score computed from sufficient evidence.
+        </p>
+        <p>
+          Confidence is reported alongside the level; it does not itself raise
+          the level. This specification does not fix a numeric confidence scale.
+        </p>
+      </section>
+
+      <section id="endorser-independence" class="normative">
+        <h3>Endorser Independence</h3>
+        <p>
+          Endorsement evidence MUST be weighted by the independence of the
+          endorsers rather than by their raw count. Endorsers that share a
+          funding source, or that are connected by a mutual-endorsement edge,
+          MUST collapse to a single <dfn>effective endorser</dfn>. An
+          endorsement set MUST NOT move a trust level across a band boundary
+          unless it contains at least <strong>three</strong> effective
+          independent endorsers.
+        </p>
+        <p>
+          The threshold is a profile parameter, adjustable as above. See
+          <a href="#security">Security &amp; Privacy Considerations</a> for the
+          limits of independence detection on an open graph.
+        </p>
+      </section>
+
       <pre class="example" title="Evidence fixture → level (illustrative vector)">
 {
   "identityVerified": true,
   "credentials": ["a", "b", "c", "d"],   // verified
-  "successful": 500, "failed": 0,
-  "endorsements": 20, "violations": 0
+  "successful": 500, "failed": 0,        // one action type, one counterparty
+  "endorsements": 20, "violations": 0    // one funding source, mutual edges
 }
-// → score in the PRIVILEGED/TRUSTED band; see conformance vectors
+// → NOT a privileged/trusted band.
+//
+// The 20 endorsements collapse to 1 effective endorser (&lt; 3 required), so they
+// move no band. The 500 same-type, low-risk interactions against a single
+// counterparty raise confidence for that one narrow capability, but raw count
+// alone moves no band. The residual level rests on identity plus the four
+// verified credentials — no higher than VERIFIED.
+//
+// See the anti-gaming conformance vectors (Fixtures A and B) in
+// ATP Conformance &amp; Interoperability.
       </pre>
+      <p class="note" title="Why this example changed">
+        Earlier drafts of this specification annotated this same fixture as
+        reaching the <code>PRIVILEGED</code>/<code>TRUSTED</code> band. That
+        outcome is the volume-farming result the requirements above exist to
+        prevent, and the annotation is corrected here.
+      </p>
     </section>
 
     <section id="trust-credential" class="normative">
@@ -171,14 +255,220 @@
       <p>
         A relying party that receives a <em>presented</em> ATP Trust Credential
         MUST cryptographically verify it (signature, expiry, revocation, schema)
-        before mapping its <code>trustLevel</code> into a policy decision. A
-        valid presented credential lets a relying party gate on attested trust
-        without querying the issuer's scoring engine directly.
+        <em>and</em> MUST confirm that its <code>issuer</code> is authorized to
+        issue credentials of this type
+        (<a href="#issuer-authorization">Issuer Authorization</a>), before
+        mapping its <code>trustLevel</code> into a policy decision. Both checks
+        MUST succeed. A valid presented credential lets a relying party gate on
+        attested trust without querying the issuer's scoring engine directly.
       </p>
-      <p class="ednote" title="Open issue: revocation & status">
-        Revocation is referenced but not yet profiled here. CG members are
-        invited to propose whether to adopt
-        <code>BitstringStatusList</code> or another status mechanism.
+      <p>
+        An ATP Trust Credential MUST carry a <code>credentialStatus</code>
+        property using <code>BitstringStatusList</code> [[VC-BSL]] as the
+        normative default status mechanism. This reuses the
+        <code>credentialStatus</code> extension point already defined by the
+        VCDM v2.0 data model [[VC-DATA-MODEL]] in which the credential is
+        expressed, requiring no additional <code>@context</code>,
+        serialization, or proof model.
+      </p>
+      <p>
+        Because a trust level is time-decaying evidence rather than a permanent
+        fact, a credential needs to be both permanently withdrawable and
+        temporarily withheld. <code>credentialStatus</code> MUST therefore be an
+        array containing:
+      </p>
+      <ul>
+        <li>exactly one entry with <code>statusPurpose: "revocation"</code>, and</li>
+        <li>exactly one entry with <code>statusPurpose: "suspension"</code>.</li>
+      </ul>
+      <p>
+        Each entry MUST conform to <code>BitstringStatusListEntry</code> and
+        MUST carry <code>statusListIndex</code> and
+        <code>statusListCredential</code>.
+      </p>
+      <p>
+        A relying party verifying a presented ATP Trust Credential MUST resolve
+        and check both status list entries as part of the verification
+        requirement above (signature, expiry, revocation, schema):
+      </p>
+      <ul>
+        <li>
+          If the <code>revocation</code> bit is set, the credential MUST be
+          treated as invalid.
+        </li>
+        <li>
+          If the <code>suspension</code> bit is set, the relying party MUST NOT
+          map the credential's <code>trustLevel</code> into a policy decision,
+          and SHOULD treat the agent's attested trust as <code>UNKNOWN</code>
+          pending re-scoring. An issuer MAY clear the suspension bit and restore
+          the attested <code>trustLevel</code> without reissuing the credential.
+        </li>
+      </ul>
+      <p>
+        This design intentionally avoids per-credential status endpoints
+        (OCSP-style checks): because many credentials share one status list and
+        a relying party inspects it locally, the issuer does not learn
+        <em>which</em> credential, agent, or relying party is being checked.
+        This is consistent with this specification's privacy-first presentation
+        posture (<a href="../atp-privacy/">ATP Privacy-First Interaction</a>).
+      </p>
+    </section>
+
+    <section id="issuer-authorization" class="normative">
+      <h2>Issuer Authorization</h2>
+      <p>
+        Cryptographic verification of an ATP Trust Credential
+        (<a href="#trust-credential">The ATP Trust Credential</a>) establishes
+        only that the credential was signed by the key bound to its
+        <code>issuer</code> and has not been altered in transit. It says
+        <strong>nothing</strong> about authorization: whether the signing entity
+        is <em>recognized as authorized</em> to issue credentials of type
+        <code>AtpTrustCredential</code> within the ecosystem the relying party
+        cares about. A syntactically valid, correctly signed, unexpired
+        credential from an unrecognized or unauthorized issuer MUST NOT raise an
+        agent's trust.
+      </p>
+      <p>
+        A conforming relying party therefore composes two independent checks
+        before mapping a presented <code>trustLevel</code> into a policy decision
+        (<a href="#policy-assertion">Policy-Assertion Decision Model</a>):
+      </p>
+      <dl>
+        <dt>Credential verification (local)</dt>
+        <dd>The relying party MUST verify the credential's signature, expiry,
+          revocation status, and schema, as required by
+          <a href="#trust-credential">The ATP Trust Credential</a>. This answers
+          <em>"was this credential really issued by the entity named in
+          <code>issuer</code>, and is it intact?"</em></dd>
+        <dt>Issuer authorization (external)</dt>
+        <dd>The relying party MUST confirm, against an authority it trusts, that
+          the <code>issuer</code> is authorized to issue this credential type.
+          This answers <em>"is that issuer permitted to make this kind of
+          attestation in my ecosystem?"</em></dd>
+      </dl>
+      <p>
+        Both checks MUST succeed. Consistent with the <em>fail-closed</em>
+        property (<a href="#scoring">Trust-Scoring Function</a>), a credential
+        whose issuer authorization cannot be positively confirmed MUST be
+        credited zero and its <code>trustLevel</code> treated as
+        <code>UNKNOWN</code> — a failed or indeterminate authorization check is
+        handled identically to an unverifiable signature.
+      </p>
+
+      <section id="authorization-via-trqp" class="normative">
+        <h3>Authorization via TRQP</h3>
+        <p>
+          This specification defines a binding to the ToIP Trust Registry Query
+          Protocol (TRQP) [[TRQP]] for the issuer-authorization check. TRQP moves
+          the trust question up one level: the relying party is not asked to
+          trust the issuer directly, but to trust a <em>governing authority</em>
+          that — under a published <em>governance framework</em> — attests that
+          the issuer may issue a given credential type. The relying party thus
+          anchors on the authority and the framework it publishes, not on a
+          per-issuer allow-list.
+        </p>
+        <p>
+          To perform the check, the relying party constructs a TRQP authorization
+          query in which:
+        </p>
+        <ul>
+          <li><code>entity_id</code> is the credential's <code>issuer</code>;</li>
+          <li><code>authority_id</code> is the ecosystem governing authority the
+            relying party trusts;</li>
+          <li><code>action</code> is <code>issue</code>;</li>
+          <li><code>resource</code> is the credential type,
+            <code>AtpTrustCredential</code>;</li>
+          <li><code>context.time</code> SHOULD be the credential's
+            <code>validFrom</code>, so authorization is evaluated as of the
+            moment of issuance rather than the moment of presentation.</li>
+        </ul>
+        <pre class="example" title="TRQP authorization query">
+POST /authorization
+Content-Type: application/json
+
+{
+  "entity_id":    "did:atp:authority.example.com:e1_...:pq1_...",
+  "authority_id": "did:example:ecosystem-governing-authority",
+  "action":       "issue",
+  "resource":     "AtpTrustCredential",
+  "context":      { "time": "2026-06-26T00:00:00Z" }
+}
+        </pre>
+        <p>
+          A response with <code>"authorized": true</code> satisfies the
+          issuer-authorization check for that credential. Any other outcome —
+          <code>false</code>, an RFC 7807 error, a timeout, or an unreachable
+          endpoint — MUST be treated as failure and handled fail-closed.
+        </p>
+        <pre class="example" title="TRQP authorization response">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "entity_id":     "did:atp:authority.example.com:e1_...:pq1_...",
+  "authority_id":  "did:example:ecosystem-governing-authority",
+  "action":        "issue",
+  "resource":      "AtpTrustCredential",
+  "authorized":    true,
+  "time_requested":"2026-06-26T00:00:00Z",
+  "time_evaluated":"2026-07-13T09:15:00Z"
+}
+        </pre>
+      </section>
+
+      <section id="governance-non-goal">
+        <h3>Governance is out of scope</h3>
+        <p><em>This subsection is non-normative.</em></p>
+        <p>
+          This specification deliberately does not legislate governance. It
+          specifies <em>how</em> a relying party queries a governing authority,
+          and leaves the identity, operation, and selection of that authority to
+          each deployment — enterprise, consortium, or open web. ATP defines no
+          root authority and endorses no registry operator. Naming this as an
+          explicit non-goal is preferred to leaving the gap implicit.
+        </p>
+      </section>
+
+      <section id="cross-ecosystem-recognition">
+        <h3>Cross-ecosystem recognition</h3>
+        <p><em>This subsection is non-normative.</em></p>
+        <p>
+          Where the <code>issuer</code> is governed by a different ecosystem than
+          the one the relying party's authority governs, the relying party MAY
+          first issue a TRQP <em>recognition</em> query to confirm that its own
+          authority recognizes the issuer's governing authority as a peer for
+          issuing <code>AtpTrustCredential</code>, then evaluate the
+          authorization query against that recognized authority. This lets a
+          verified trust level cross ecosystem boundaries without collapsing
+          every issuer into a single global trust root.
+        </p>
+        <p>
+          Recognition across governance frameworks is a hard problem and
+          normalizing it prematurely would compromise this deliverable. It
+          remains non-normative in this version and is expected to be revisited.
+        </p>
+      </section>
+
+      <p class="ednote" title="Open issues: authorization granularity and caching">
+        The binding above reuses the reference <code>action</code> /
+        <code>resource</code> pair <code>issue</code> /
+        <code>AtpTrustCredential</code>. CG members are invited to consider:
+        whether <code>resource</code> should be more granular (e.g. scoped per
+        trust level or per credential profile); whether authorization SHOULD be
+        re-checked at presentation time in addition to issuance time for
+        long-lived credentials; whether the authorization result should itself be
+        cached and, if so, with what freshness bound; and whether a
+        <em>failed</em> authorization check should map to <code>UNKNOWN</code> or
+        to an explicit distrust signal distinct from the mere absence of
+        evidence.
+      </p>
+      <p class="note" title="Normative dependency on an external deliverable">
+        Binding to [[TRQP]] makes conformance to this section depend on a
+        specification maintained by another organization (the Trust Over IP
+        Foundation). The Community Group adopted this trade-off deliberately:
+        reusing an established open standard is preferred to inventing an
+        ATP-native registry protocol. A liaison contact for TRQP would help keep
+        the binding current.
       </p>
     </section>
 
@@ -243,6 +533,95 @@
         parties SHOULD prefer privacy-preserving presentation
         (<a href="../atp-privacy/">selective disclosure</a>) where the full
         credential is not required.
+      </p>
+      <p>
+        Manipulability of the score is as consequential an attack surface as
+        credential-verification integrity. The requirements in
+        <a href="#scoring">Trust-Scoring Function</a> — recency decay, confidence
+        reporting, and endorser independence — exist to prevent a score from
+        being driven by interaction volume alone.
+      </p>
+
+      <section id="sybil-limitation">
+        <h3>Limits of Sybil resistance on an open graph</h3>
+        <p>
+          <a href="#endorser-independence">Endorser Independence</a> raises the
+          cost of endorsement farming but does not eliminate it. The collapse
+          rule detects shared funding sources and mutual-endorsement edges; it
+          does not detect a well-resourced adversary who creates endorsers that
+          are genuinely independent by those measures. On a fully open graph,
+          with no admission control on who may endorse, Sybil resistance cannot
+          be complete — this is a property of the setting, not a defect of the
+          rule.
+        </p>
+        <p>
+          Deployments requiring stronger guarantees SHOULD constrain who may
+          endorse. <a href="#issuer-authorization">Issuer Authorization</a>
+          provides the hook: where endorsements are carried as credentials from
+          authorized issuers, the governing authority's admission criteria bound
+          the adversary's ability to manufacture independent-looking endorsers.
+          The residual exposure therefore narrows as issuer authorization is
+          adopted, and is widest in fully open, unauthorized-endorser
+          deployments.
+        </p>
+        <p>
+          Implementations MUST NOT present a trust level as Sybil-resistant on
+          the strength of the independence threshold alone.
+        </p>
+      </section>
+
+      <section id="contributor-disclosure">
+        <h3>Contributor disclosure</h3>
+        <p><em>This subsection is non-normative.</em></p>
+        <p>
+          The anti-gaming conformance vectors contributed to this work map their
+          authority-frame layer onto <code>draft-kroehl-agentic-trust-aae-00</code>,
+          an IETF draft authored by the same contributor (Lars Kroehl, MolTrust /
+          CryptoKRI GmbH). The Community Group records this on the record, as it
+          does ATP's own commercial backing (Sovr Inc.). Contributors building on
+          their own prior work is expected and is not an obstacle; the vectors
+          themselves are implementation-neutral and assert bands, per-capability
+          confidence, and invariants rather than a scoring formula tied to any
+          one specification.
+        </p>
+      </section>
+    </section>
+
+    <section id="ack" class="informative">
+      <h2>Acknowledgments</h2>
+      <p>
+        The following Community Group participants contributed substantive text
+        or analysis incorporated into this specification. Contributions were
+        made in the Community Group's public issue tracker under the
+        <a href="https://www.w3.org/community/about/process/cla/">W3C Community
+        Contributor License Agreement</a>.
+      </p>
+      <ul>
+        <li>
+          <strong>Paul Ashley</strong> (Anonyome Labs, Inc.) — authored the
+          <a href="#issuer-authorization">Issuer Authorization</a> section and
+          its binding to the ToIP Trust Registry Query Protocol [[TRQP]]
+          (<a href="https://github.com/w3c-cg/atp/issues/2">issue #2</a>), and
+          the credential status and revocation requirements profiling
+          <code>BitstringStatusList</code> [[VC-BSL]] in
+          <a href="#trust-credential">The ATP Trust Credential</a>
+          (<a href="https://github.com/w3c-cg/atp/issues/3">issue #3</a>).
+        </li>
+        <li>
+          <strong>Lars Kersten Kroehl</strong> (CryptoKRI GmbH) — identified the
+          volume-farming and Sybil exposure in the count-based scoring factors,
+          and contributed the anti-gaming conformance vectors and the recency
+          decay and endorser independence parameters
+          (<a href="https://github.com/w3c-cg/atp/issues/1">issue #1</a>).
+        </li>
+      </ul>
+      <p class="note" title="Contributor disclosure">
+        The layer mapping accompanying the anti-gaming conformance vectors
+        references <code>draft-kroehl-agentic-trust-aae-00</code>, an IETF
+        Internet-Draft authored by the same contributor, whose work is
+        commercially backed (MolTrust / CryptoKRI GmbH). This is recorded for
+        transparency, in the same spirit as this specification's own commercial
+        backing, and is not regarded as an impediment to the contribution.
       </p>
     </section>
   </body>
