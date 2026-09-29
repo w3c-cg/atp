@@ -75,6 +75,7 @@
           <tr><td>4</td><td>Audit store / trust registry — integrity</td><td>This document, §<a href="#audit-integrity">Audit Integrity</a></td></tr>
           <tr><td>5</td><td>Privacy — selective disclosure (Merkle membership)</td><td><a href="../atp-privacy/">ATP Privacy</a></td></tr>
           <tr><td>6</td><td>Trust scoring — anti-gaming (decay, confidence, endorser independence)</td><td><a href="../atp-trust/#scoring">ATP Trust</a></td></tr>
+          <tr><td>7</td><td>Trust Credential status — Bitstring Status List revocation and suspension</td><td><a href="../atp-trust/#credential-status">ATP Trust</a></td></tr>
         </tbody>
       </table>
       <p class="note" title="Reference runner">
@@ -252,6 +253,70 @@
       </p>
     </section>
 
+    <section id="status-vectors" class="normative">
+      <h2>Trust Credential Status Vectors (Item 7)</h2>
+      <p>
+        Each case uses a fixed evaluation time and deterministic local
+        Bitstring Status List Credential fixtures. A test runner MUST resolve
+        fixture URLs locally, verify the referenced credentials, and assert
+        both status and policy-use results. Except for the active, restored,
+        and valid holder-provided cases, a failed case MUST result in effective
+        <code>UNKNOWN</code>, zero trust credit, and no policy use of the
+        attested level. A set revocation bit also invalidates the credential.
+      </p>
+      <table class="simple">
+        <thead><tr><th>ID</th><th>Input condition</th><th>Expected result</th></tr></thead>
+        <tbody>
+          <tr><td><code>status-01-valid-active</code></td><td>Two valid lists; revocation=0, suspension=0</td><td>Status passes; attested level eligible for policy evaluation</td></tr>
+          <tr><td><code>status-02-revoked</code></td><td>Revocation=1, suspension=0</td><td>Credential invalid; zero trust; policy use denied</td></tr>
+          <tr><td><code>status-03-suspended</code></td><td>Revocation=0, suspension=1</td><td>Effective UNKNOWN; zero trust; policy use denied</td></tr>
+          <tr><td><code>status-04-both-set</code></td><td>Both status values=1</td><td>Credential invalid; revocation takes precedence</td></tr>
+          <tr><td><code>status-05-suspension-cleared</code></td><td>Same unexpired credential: verified suspension=1, then newer verified suspension=0; revocation=0</td><td>First UNKNOWN; second may use attested level without reissuance</td></tr>
+          <tr><td><code>status-06-missing-status</code></td><td>credentialStatus absent</td><td>Structural failure; UNKNOWN; zero trust</td></tr>
+          <tr><td><code>status-07-not-array</code></td><td>credentialStatus is an object</td><td>Structural failure; UNKNOWN; zero trust</td></tr>
+          <tr><td><code>status-08-missing-purpose</code></td><td>Only one required purpose present</td><td>Structural failure; UNKNOWN; zero trust</td></tr>
+          <tr><td><code>status-09-duplicate-purpose</code></td><td>Duplicate revocation entry</td><td>Structural failure; UNKNOWN; zero trust</td></tr>
+          <tr><td><code>status-10-wrong-entry-type</code></td><td>Entry type differs from BitstringStatusListEntry</td><td>Malformed; fail closed</td></tr>
+          <tr><td><code>status-11-bad-index</code></td><td>Negative, JSON number, non-decimal, or out-of-range index</td><td>Malformed or range error; fail closed</td></tr>
+          <tr><td><code>status-12-bad-list-url</code></td><td>statusListCredential is not a URL</td><td>Malformed; fail closed</td></tr>
+          <tr><td><code>status-13-retrieval-error</code></td><td>List resolver times out or returns an error</td><td>Retrieval error; UNKNOWN; zero trust</td></tr>
+          <tr><td><code>status-14-proof-error</code></td><td>Status-list credential proof fails verification</td><td>Verification error; fail closed</td></tr>
+          <tr><td><code>status-15-purpose-mismatch</code></td><td>Entry says suspension; list says revocation</td><td>Verification error; fail closed</td></tr>
+          <tr><td><code>status-16-wrong-list-type</code></td><td>List credential lacks BitstringStatusListCredential type</td><td>Verification error; fail closed</td></tr>
+          <tr><td><code>status-17-short-list</code></td><td>Expanded list below 131072 one-bit entries</td><td>List length error; fail closed</td></tr>
+          <tr><td><code>status-18-corrupt-encoded-list</code></td><td>Encoded list cannot be decoded</td><td>Processing error; fail closed</td></tr>
+          <tr><td><code>status-19-expired-list</code></td><td>List credential outside validity period</td><td>Verification error; fail closed</td></tr>
+          <tr><td><code>status-20-stapled-valid-list</code></td><td>Holder provides verified list accepted under freshness policy</td><td>Same status result without issuer callback</td></tr>
+        </tbody>
+      </table>
+      <pre class="example" title="Status vector schema and suspended case">
+{
+  "id": "status-03-suspended",
+  "conformance_item": "trust-credential/status",
+  "input": {
+    "credential": "fixtures/credentials/trust-valid.json",
+    "resources": {
+      "https://authority.example/status/revocation/3": "fixtures/status/revocation-unset.json",
+      "https://authority.example/status/suspension/4": "fixtures/status/suspension-set.json"
+    },
+    "evaluationTime": "2026-09-29T12:00:00Z"
+  },
+  "expected": {
+    "statusConformant": true,
+    "credentialValid": true,
+    "effectiveTrustLevel": "UNKNOWN",
+    "trustCredit": 0,
+    "policyUseAllowed": false
+  }
+}
+      </pre>
+      <p class="ednote" title="Fixture publication">
+        The table specifies required cases and a vector shape. Signed local
+        credential and encoded-list fixture files remain to be published before
+        claiming an executable cross-implementation status suite.
+      </p>
+    </section>
+
     <section id="audit-integrity" class="normative">
       <h2>Audit-Store Integrity</h2>
       <p>
@@ -303,8 +368,13 @@
       <h2>Conformance Claims</h2>
       <p>
         An implementation claiming ATP conformance MUST state which items
-        (1–6) it implements and MUST pass every published vector for those items.
+        (1–7) it implements and MUST pass every published vector for those items.
         A claim of "ATP Core" conformance requires items 1, 2, and 4.
+      </p>
+      <p>
+        An implementation claiming item 7 MUST pass every published Trust
+        Credential status vector. Item 7 is REQUIRED for an implementation
+        claiming conformance as an ATP Trust Credential verifier.
       </p>
       <p>
         Item 6 (anti-gaming) is <strong>not</strong> part of the "ATP Core" set
@@ -322,3 +392,4 @@
     </section>
   </body>
 </html>
+
