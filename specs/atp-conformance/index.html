@@ -299,6 +299,59 @@
       </p>
     </section>
 
+    <section id="shared-operator-cohort-vectors" class="informative">
+      <h2>Proposed Vectors: Shared-Operator Endorser Cohort</h2>
+      <p class="ednote" title="Proposed, not adopted">
+        These vectors follow up a request in
+        <a href="https://github.com/w3c-cg/atp/issues/1">issue #1</a> for a
+        fixture that locates where the
+        <a href="../atp-trust/#endorser-independence">Endorser Independence</a>
+        measure stops holding. They are draft input for CG review and are not
+        part of item 6 until the group adopts them.
+      </p>
+      <p>
+        The scenario is one operator controlling a cohort of endorser accounts
+        that each have a distinct funding source and no mutual-endorsement
+        edges. Vectors are published in
+        <a href="antigaming-cohort-vectors.json"><code>antigaming-cohort-vectors.json</code></a>
+        under the default profile (90-day half-life, three effective independent
+        endorsers). Each vector carries a <code>status</code> stating whether
+        its expected output is determined by the current text or depends on an
+        open question.
+      </p>
+      <ul>
+        <li><strong>C1 — cohort size sweep (n = 1, 2, 3, 5, 10).</strong> Under
+          the current collapse criteria (shared funding source, mutual edge), a
+          hidden shared operator is not detected: the cohort counts as
+          <var>n</var> effective independent endorsers. The measure stops
+          holding at <var>n</var> = 3, the threshold.</li>
+        <li><strong>C2 — aging (n = 3, ages 0/90/180/365 days).</strong> Decayed
+          endorsement weight is 3, 1.5, 0.75 and 0.1804.</li>
+        <li><strong>C3 — periodic re-endorsement.</strong> A cohort that
+          re-endorses every 30 days sustains a decayed weight of at least
+          0.7937 per endorser indefinitely (2.3811 for n = 3). Decay bounds
+          stale evidence, not a cohort that keeps refreshing.</li>
+        <li><strong>C4 — operator visible to the verifier.</strong> Expected
+          output pending Q1.</li>
+      </ul>
+      <p>Open questions raised by these vectors:</p>
+      <ol>
+        <li><strong>Q1.</strong> Should a shared operator or controller collapse
+          endorsers to one effective endorser, alongside shared funding source
+          and mutual edges?</li>
+        <li><strong>Q2.</strong> Does the three-endorser threshold count
+          endorsers regardless of age, or apply to decayed weight?</li>
+        <li><strong>Q3.</strong> Should the specification bound how far an
+          endorsement set alone can move the global band?</li>
+      </ol>
+      <p>
+        Every C1 vector at or above the threshold falls under
+        <a href="../atp-trust/#sybil-limitation">Limits of Sybil resistance on an
+        open graph</a>: an implementation MUST NOT present the resulting level as
+        Sybil-resistant.
+      </p>
+    </section>
+
     <section id="claims" class="normative">
       <h2>Conformance Claims</h2>
       <p>
