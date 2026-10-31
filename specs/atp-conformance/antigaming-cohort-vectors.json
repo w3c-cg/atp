@@ -1,0 +1,578 @@
+{
+  "description": "Proposed anti-gaming vectors for a shared-operator endorser cohort (w3c-cg/atp#1 follow-up). DRAFT input for CG review; not adopted.",
+  "profile": {
+    "recency_half_life_days": 90,
+    "min_effective_independent_endorsers": 3
+  },
+  "decay_formula": "weight = 0.5 ^ (age_days / recency_half_life_days); values rounded to 4 decimal places",
+  "baseline": "identityVerified + 4 verified credentials and no interactions: residual band no higher than VERIFIED (as in Fixture A).",
+  "open_questions": {
+    "Q1": "Should a shared operator/controller collapse endorsers to one effective endorser, alongside shared funding source and mutual edges?",
+    "Q2": "Does the 3-effective-endorser threshold count endorsers regardless of age, or apply to decayed weight?",
+    "Q3": "Should the spec bound how far an endorsement set alone can move the global band?"
+  },
+  "vectors": [
+    {
+      "id": "atp-antigaming-C1-hidden-operator-n1",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "determinate under current text",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 1,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 1,
+          "distinct_funding_sources": 1,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": 1,
+        "decayed_endorsement_weight": 1,
+        "endorsement_set_may_cross_band_boundary": false,
+        "global_band_ceiling": "VERIFIED",
+        "invariant_checks": [
+          "fewer than 3 effective independent endorsers: endorsements move no band"
+        ]
+      }
+    },
+    {
+      "id": "atp-antigaming-C1-hidden-operator-n2",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "determinate under current text",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 2,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 2,
+          "distinct_funding_sources": 2,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": 2,
+        "decayed_endorsement_weight": 2,
+        "endorsement_set_may_cross_band_boundary": false,
+        "global_band_ceiling": "VERIFIED",
+        "invariant_checks": [
+          "fewer than 3 effective independent endorsers: endorsements move no band"
+        ]
+      }
+    },
+    {
+      "id": "atp-antigaming-C1-hidden-operator-n3",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "determinate under current text",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": 3,
+        "decayed_endorsement_weight": 3,
+        "endorsement_set_may_cross_band_boundary": true,
+        "global_band_ceiling": "not bounded by the endorser-independence rule",
+        "invariant_checks": [
+          "independence rule admits the cohort: measure does not hold at cohort_size >= 3",
+          "level MUST NOT be presented as Sybil-resistant (Limits of Sybil resistance)"
+        ]
+      }
+    },
+    {
+      "id": "atp-antigaming-C1-hidden-operator-n5",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "determinate under current text",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 5,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 5,
+          "distinct_funding_sources": 5,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": 5,
+        "decayed_endorsement_weight": 5,
+        "endorsement_set_may_cross_band_boundary": true,
+        "global_band_ceiling": "not bounded by the endorser-independence rule",
+        "invariant_checks": [
+          "independence rule admits the cohort: measure does not hold at cohort_size >= 3",
+          "level MUST NOT be presented as Sybil-resistant (Limits of Sybil resistance)"
+        ]
+      }
+    },
+    {
+      "id": "atp-antigaming-C1-hidden-operator-n10",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "determinate under current text",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 10,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 10,
+          "distinct_funding_sources": 10,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": 10,
+        "decayed_endorsement_weight": 10,
+        "endorsement_set_may_cross_band_boundary": true,
+        "global_band_ceiling": "not bounded by the endorser-independence rule",
+        "invariant_checks": [
+          "independence rule admits the cohort: measure does not hold at cohort_size >= 3",
+          "level MUST NOT be presented as Sybil-resistant (Limits of Sybil resistance)"
+        ]
+      }
+    },
+    {
+      "id": "atp-antigaming-C2-hidden-operator-n3-age0",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "determinate under current text",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "decayed_endorsement_weight": 3,
+        "endorsement_set_may_cross_band_boundary": true
+      }
+    },
+    {
+      "id": "atp-antigaming-C2-hidden-operator-n3-age90",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          90,
+          90,
+          90
+        ]
+      },
+      "expected": {
+        "decayed_endorsement_weight": 1.5,
+        "endorsement_set_may_cross_band_boundary": "pending Q2"
+      }
+    },
+    {
+      "id": "atp-antigaming-C2-hidden-operator-n3-age180",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          180,
+          180,
+          180
+        ]
+      },
+      "expected": {
+        "decayed_endorsement_weight": 0.75,
+        "endorsement_set_may_cross_band_boundary": "pending Q2"
+      }
+    },
+    {
+      "id": "atp-antigaming-C2-hidden-operator-n3-age365",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          365,
+          365,
+          365
+        ]
+      },
+      "expected": {
+        "decayed_endorsement_weight": 0.1804,
+        "endorsement_set_may_cross_band_boundary": "pending Q2"
+      }
+    },
+    {
+      "id": "atp-antigaming-C3-hidden-operator-n3-refresh30d",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          30,
+          30,
+          30
+        ],
+        "refresh_period_days": 30
+      },
+      "expected": {
+        "sustained_minimum_decayed_weight": 2.3811,
+        "note": "Decay bounds stale evidence, not a cohort that keeps re-endorsing: this floor holds indefinitely."
+      }
+    },
+    {
+      "id": "atp-antigaming-C3-hidden-operator-n3-refresh90d",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          90,
+          90,
+          90
+        ],
+        "refresh_period_days": 90
+      },
+      "expected": {
+        "sustained_minimum_decayed_weight": 1.5,
+        "note": "Decay bounds stale evidence, not a cohort that keeps re-endorsing: this floor holds indefinitely."
+      }
+    },
+    {
+      "id": "atp-antigaming-C3-hidden-operator-n5-refresh30d",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 5,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 5,
+          "distinct_funding_sources": 5,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          30,
+          30,
+          30,
+          30,
+          30
+        ],
+        "refresh_period_days": 30
+      },
+      "expected": {
+        "sustained_minimum_decayed_weight": 3.9685,
+        "note": "Decay bounds stale evidence, not a cohort that keeps re-endorsing: this floor holds indefinitely."
+      }
+    },
+    {
+      "id": "atp-antigaming-C3-hidden-operator-n10-refresh30d",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "weight determinate; threshold treatment pending (Q2)",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 10,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 10,
+          "distinct_funding_sources": 10,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": false
+        },
+        "endorsement_ages_days": [
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30,
+          30
+        ],
+        "refresh_period_days": 30
+      },
+      "expected": {
+        "sustained_minimum_decayed_weight": 7.937,
+        "note": "Decay bounds stale evidence, not a cohort that keeps re-endorsing: this floor holds indefinitely."
+      }
+    },
+    {
+      "id": "atp-antigaming-C4-visible-operator-n3",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "pending Q1",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 3,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 3,
+          "distinct_funding_sources": 3,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": true
+        },
+        "endorsement_ages_days": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": "pending Q1 (1 if a shared operator collapses; otherwise 3)"
+      }
+    },
+    {
+      "id": "atp-antigaming-C4-visible-operator-n10",
+      "conformance_item": "scoring/anti-gaming/shared-operator-cohort",
+      "status": "pending Q1",
+      "input": {
+        "identityVerified": true,
+        "credentials": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "successful": 0,
+        "failed": 0,
+        "violations": 0,
+        "endorsements": 10,
+        "endorser_cohort": {
+          "controlling_operators": 1,
+          "cohort_size": 10,
+          "distinct_funding_sources": 10,
+          "mutual_edges": false,
+          "shared_operator_visible_to_verifier": true
+        },
+        "endorsement_ages_days": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "effective_independent_endorsers": "pending Q1 (1 if a shared operator collapses; otherwise 10)"
+      }
+    }
+  ]
+}
