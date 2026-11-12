@@ -1,0 +1,583 @@
+{
+  "profile": "experimental-ed25519-fixture-jws-v3",
+  "adapter": "author-reference",
+  "independentReproduction": false,
+  "passed": 41,
+  "total": 41,
+  "results": [
+    {
+      "id": "status-01-valid-active",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": true,
+        "effectiveTrustLevel": "TRUSTED",
+        "trustCredit": 1,
+        "policyUseAllowed": true,
+        "reason": "active",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-02-revoked",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-03-suspended",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": true,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "suspended",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-04-both-set",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-05-suspension-cleared",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": true,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "suspended",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-05-suspension-cleared",
+      "step": 2,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": true,
+        "effectiveTrustLevel": "TRUSTED",
+        "trustCredit": 1,
+        "policyUseAllowed": true,
+        "reason": "active",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-06-missing-status",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-07-not-array",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-08-missing-suspension",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-08-missing-revocation",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-09-duplicate-revocation",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-09-duplicate-suspension",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-10-wrong-entry-type",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "entry",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-11-bad-index-negative",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "entry",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-11-bad-index-number",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "entry",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-11-bad-index-non-decimal",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "entry",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-11-bad-index-range",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "range",
+        "errorType": "RANGE_ERROR"
+      }
+    },
+    {
+      "id": "status-11-bad-index-huge",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "range",
+        "errorType": "RANGE_ERROR"
+      }
+    },
+    {
+      "id": "status-12-bad-list-url",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "url",
+        "errorType": null
+      }
+    },
+    {
+      "id": "status-13-retrieval-error",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "retrieval",
+        "errorType": "STATUS_RETRIEVAL_ERROR"
+      }
+    },
+    {
+      "id": "status-13-retrieval-timeout",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "retrieval-timeout",
+        "errorType": "STATUS_RETRIEVAL_ERROR"
+      }
+    },
+    {
+      "id": "status-14-proof-error",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "list-proof",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "status-15-purpose-mismatch",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "purpose",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "status-16-wrong-list-type",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "list",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "status-17-short-list",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "length",
+        "errorType": "STATUS_LIST_LENGTH_ERROR"
+      }
+    },
+    {
+      "id": "status-18-corrupt-encoded-list",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "encoding",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "status-19-expired-list",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "list-validity",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "status-20-stapled-valid-list",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": true,
+        "effectiveTrustLevel": "TRUSTED",
+        "trustCredit": 1,
+        "policyUseAllowed": true,
+        "reason": "active",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-stapled-stale",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "freshness",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "extra-stapled-wrong-list",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "list",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "extra-stapled-invalid-proof",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "list-proof",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "extra-revocation-cleared",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-revocation-cleared",
+      "step": 2,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-bit-order-0",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-bit-order-7",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-bit-order-8",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-bit-order-131071",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": true,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "revoked",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-invalid-trust-signature",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "proof",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-list-type-substring",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "list",
+        "errorType": "STATUS_VERIFICATION_ERROR"
+      }
+    },
+    {
+      "id": "extra-missing-trust-level",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "credential-structure",
+        "errorType": null
+      }
+    },
+    {
+      "id": "extra-unsupported-trust-level",
+      "step": 1,
+      "ok": true,
+      "observed": {
+        "statusConformant": false,
+        "credentialValid": false,
+        "effectiveTrustLevel": "UNKNOWN",
+        "trustCredit": 0,
+        "policyUseAllowed": false,
+        "reason": "credential-structure",
+        "errorType": null
+      }
+    }
+  ]
+}

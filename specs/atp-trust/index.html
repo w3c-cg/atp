@@ -304,10 +304,24 @@
           <code>UNKNOWN</code>. A relying party MUST NOT use its attested
           <code>trustLevel</code> to authorize an action.
         </p>
+        <p>
+          For a failure classified by [[VC-BSL]], a verifier MUST record the
+          applicable error type. An ATP-only structural failure outside the
+          status-list algorithm MUST be distinguishable from a retrieval or
+          verification failure. A verifier MAY record a finer diagnostic reason.
+        </p>
+        <p class="ednote">
+          A bounded reuse policy for verified copies is proposed for review.
+          Its age origin, maximum age, treatment of <code>ttl</code>, skew, and
+          evidence requirements must be specified before claiming cache
+          interoperability. Validity dates do not establish publication order.
+        </p>
         <ul>
           <li>If the validated <code>revocation</code> status is set, the
-            credential MUST be treated as permanently invalid. Clearing a
-            revocation bit MUST NOT restore its validity.</li>
+            credential MUST be treated as invalid. An issuer MUST NOT clear a
+            revocation status once set. A relying party that has previously
+            observed revocation MAY retain that decision. A stateless relying
+            party cannot infer a previously set bit from a later unset list.</li>
           <li>If the validated <code>suspension</code> status is set, the
             relying party MUST treat the effective <code>trustLevel</code> as
             <code>UNKNOWN</code>, MUST credit zero trust for this credential,
