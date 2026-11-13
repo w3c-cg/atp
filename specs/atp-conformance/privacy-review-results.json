@@ -1,0 +1,31 @@
+{
+  "profile": "proposal-ascii-key-scalars-v0",
+  "sorted_keys": [
+    "clearance",
+    "id",
+    "name",
+    "org",
+    "role"
+  ],
+  "draft_example_indices": [
+    1,
+    4
+  ],
+  "sorted_zero_based_indices": [
+    2,
+    3
+  ],
+  "candidate_root": "3fe0dd75bf510ae96f35ccc6f28b04a01b50d7f312595a061e447627378f3425",
+  "expected_outcomes": {
+    "name opening": true,
+    "org opening": true,
+    "odd node opening": true,
+    "tampered value: str": false,
+    "tampered value: bool": false,
+    "tampered name: str": false,
+    "tampered index: int": false,
+    "tampered path: list": false,
+    "wrong odd-node placeholder": false,
+    "substituted root/opening against pinned root": false
+  }
+}
