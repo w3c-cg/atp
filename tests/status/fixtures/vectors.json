@@ -1,0 +1,987 @@
+{
+  "profile": "experimental-ed25519-fixture-jws-v3",
+  "sourceCommit": "7e3a990c58c980ccb016ebaf6ce0b5163151881f",
+  "cases": [
+    {
+      "id": "status-01-valid-active",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": true,
+          "effectiveTrustLevel": "TRUSTED",
+          "trustCredit": 1,
+          "policyUseAllowed": true,
+          "reason": "active",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-02-revoked",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNRQVEwQUFBd0NJTzFmMmh6X0lBSUpBQUFBQUFBQUFBQUFBQURmVkFFQUFBREFPUU5RZGI1Z0FFQUFBQSJ9fQ.ce-MYYgOB5kteYFuVmulghuETs0lcEwCc-A-C-9ENmrG4NTARIKxqfNbqsiDNDY2hYwzrYVSaFTiDWDshCm7BQ",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-03-suspended",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNRQVEwQUFBd0NJTzFmMmh6X0lBSUpBQUFBQUFBQUFBQUFBQURmVkFFQUFBREFPUU5RZGI1Z0FFQUFBQSJ9fQ.EQMC8VijCXP_pr3qzwhE7l-nqHrZoWQcNz38Hp2WT8buGn5ic6FSb9iFchQRhbvPU8DE6uKOcsPrfzS2byIRAg"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": true,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "suspended",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-04-both-set",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNRQVEwQUFBd0NJTzFmMmh6X0lBSUpBQUFBQUFBQUFBQUFBQURmVkFFQUFBREFPUU5RZGI1Z0FFQUFBQSJ9fQ.ce-MYYgOB5kteYFuVmulghuETs0lcEwCc-A-C-9ENmrG4NTARIKxqfNbqsiDNDY2hYwzrYVSaFTiDWDshCm7BQ",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNRQVEwQUFBd0NJTzFmMmh6X0lBSUpBQUFBQUFBQUFBQUFBQURmVkFFQUFBREFPUU5RZGI1Z0FFQUFBQSJ9fQ.EQMC8VijCXP_pr3qzwhE7l-nqHrZoWQcNz38Hp2WT8buGn5ic6FSb9iFchQRhbvPU8DE6uKOcsPrfzS2byIRAg"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-05-suspension-cleared",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNRQVEwQUFBd0NJTzFmMmh6X0lBSUpBQUFBQUFBQUFBQUFBQURmVkFFQUFBREFPUU5RZGI1Z0FFQUFBQSJ9fQ.EQMC8VijCXP_pr3qzwhE7l-nqHrZoWQcNz38Hp2WT8buGn5ic6FSb9iFchQRhbvPU8DE6uKOcsPrfzS2byIRAg"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        },
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MzA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.OO9JipQ2pKFH0V4OxmxQzZW0dlUPqDX4BbhgUP_06yDuu1sODlEXRlyFHQQgfp-Co0R_mT6KFXgMj2X7t-TtDQ"
+          },
+          "evaluationTime": "2026-09-29T12:01:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": true,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "suspended",
+          "errorType": null
+        },
+        {
+          "statusConformant": true,
+          "credentialValid": true,
+          "effectiveTrustLevel": "TRUSTED",
+          "trustCredit": 1,
+          "policyUseAllowed": true,
+          "reason": "active",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-06-missing-status",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifX0.6zdnrC-GIjnQs9tlSd03GU7IBpLkbRrXO2JNPPI9nILtDsh4HmUsRUpoZCIqQXYlSr1ipw0RmJQ3cBJFDy2oCg",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-07-not-array",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoicmV2b2NhdGlvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMifX0.P3sO0bX22dU_a1x78AqUcXV20XP2jzJHbL9fe8UkVy5W8k9_2h3ekGtdJro7Ei0MGCHsIPUahVUCfkh5rMWZBQ",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-08-missing-suspension",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn1dfQ.iEZ1ZDiIqVkuZQE3Lq9O9YQJ8oF_mWpsjWLetc4W2fcsMN6AcUvv7fpIfF7dYrx_Jg73HNArAgMj5u9XrIQ1CA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-08-missing-revocation",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In1dfQ.ZuM5VH5ct4KCwfh-QUKV6SbBo0LDcwCAD4mm542uE43kujj2o0eNOwQs5QjPQirKtiK2QGUVtxKkp4cQJbHNBg",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-09-duplicate-revocation",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoicmV2b2NhdGlvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMifV19.Ln1ry8xvgS0lMSS9eNejfwdnxT8yay-COwnuvZEgw-NQDvXfc8vb9c_UWrEx5VMWo0a5LHEAZFG0gphQu7BgDw",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-09-duplicate-suspension",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.JMR3Y01Bx8PWEsYX-DBfiCpUUO1Jt1yFRqYpgNr6cTCPIx3amsu6SV5GvA2N9BlquR6naeGSzxM2tZpCDUYpBA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-10-wrong-entry-type",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiT3RoZXIiLCJzdGF0dXNQdXJwb3NlIjoicmV2b2NhdGlvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMifSx7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80Izk0NTY3IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3RFbnRyeSIsInN0YXR1c1B1cnBvc2UiOiJzdXNwZW5zaW9uIiwic3RhdHVzTGlzdEluZGV4IjoiOTQ1NjciLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCJ9XX0.opn0n4VHiscleYCI56qtA0Ef7X9EGSvaRg2ODiCCB3bbjbsPL-nWJVjxS17qLbnYzzDzPNEJaFTl1GOg2_FxBA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "entry",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-11-bad-index-negative",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiItMSIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19._sBraRbwUI0KCcbl_oDrccXeG12RLPXLfoMGMTwFDfcMR_mL1yZpIJvuG50bv0_7MeOOOi8ji1kx8-B-9Df1CA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "entry",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-11-bad-index-number",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOjEsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.iIk1wL90gQAZau2dqq-5TM7fWCT5OO38bIQpeF-DEJS6lMVSLUzuUJtMEApBtQDzqlAoxgoVa3h72YXrttzGBg",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "entry",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-11-bad-index-non-decimal",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiIxZTIiLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyJ9LHsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In1dfQ.OVJhuP5GaJfUPrMreLbFbuisADmnQmbOKh1rkzBN_yWT8hYh_EJ9nCPss6IEm1D3egVtd-nsRPEdFul5OPTHBw",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "entry",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-11-bad-index-range",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiIxMzEwNzIiLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyJ9LHsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In1dfQ.PUsg3HD6XhM9vzywWHP81UInj_UvHC-xf0hKpZ9EJHTYBoFCCClL00NdJYTWzg_QOLzUmiHlwHMMXYrXyLpoDg",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "range",
+          "errorType": "RANGE_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-11-bad-index-huge",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OSIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.SQ6PRADdxrCJ2svKhnPOABqJmbeXIExCp6mCLzeFhLjPd8GAxdWXHkxinGNFRfs0684XEoaG_GkfebHV42_cAQ",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "range",
+          "errorType": "RANGE_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-12-bad-list-url",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoibm90IGEgVVJMIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.hJSEX_-t_0tas3Lbn0BcOnz1hP0YvZotK1AUCs11sGAYwDyRNe9qz03NaT2xfO4z_rhrhdyc26E5NSFZmDuhBQ",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "url",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "status-13-retrieval-error",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": null
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "retrieval",
+          "errorType": "STATUS_RETRIEVAL_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-13-retrieval-timeout",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z",
+          "retrievalTimeout": "https://authority.example/status/suspension/4"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "retrieval-timeout",
+          "errorType": "STATUS_RETRIEVAL_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-14-proof-error",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QEZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "list-proof",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-15-purpose-mismatch",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.4m2ZgoFUfLSlwj9d7JBqPqs_b9A4OQHRCUai2h3slGGLmRZThjP7HuPAQAwZP30DQfohkS7K2gWoLrsOBCHTAA"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "purpose",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-16-wrong-list-type",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zI2xpc3QiLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdCIsInN0YXR1c1B1cnBvc2UiOiJyZXZvY2F0aW9uIiwiZW5jb2RlZExpc3QiOiJ1SDRzSUFBQUFBQUFDQS0zQk1RRUFBQURDb1BWUGJRd2ZvQUFBQUFBQUFBQUFBQUFBQUFBQUFJQzNBWWJTVktzQVFBQUEifX0.BgGsdRdzWqDa6S66urbEpFCpBiWC0CTryaJvFCtTm0ZzL3C_y3ubdNID1wmmFpq4C9OJcVbadfTYdJm6P311AA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "list",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-17-short-list",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDekFRbXZoWXJfUHdBQSJ9fQ.10eOcHbBSD3LKjkVFjStFGi9yPg8PENElkinBHI0-MGg3PUPB_q8mc22Zks9U5H4Um31hM0sl8FwUxtx8w6CDQ",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "length",
+          "errorType": "STATUS_LIST_LENGTH_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-18-corrupt-encoded-list",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVBQUFBIn19.7GaX1TPsViaDJPqKDC8Vvm8iRNRIgF3EuLwWhXhrTawE_Nv7aQex86XdQsP6FRh1em0wEFVuzf5YSpstywSQBA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "encoding",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-19-expired-list",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTE6NTk6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.cxWCHHMWNEIrI1oB7jkpfO1UDYXYz9KuBGvfoMQr_q-v4jc7PY3muDGrQCehpe__AxTCTvQfZvw9qWjCIdzYCQ"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "list-validity",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "status-20-stapled-valid-list",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z",
+          "holderProvided": true,
+          "maxAgeMs": 3600000
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": true,
+          "effectiveTrustLevel": "TRUSTED",
+          "trustCredit": 1,
+          "policyUseAllowed": true,
+          "reason": "active",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-stapled-stale",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z",
+          "holderProvided": true,
+          "maxAgeMs": 1000
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "freshness",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "extra-stapled-wrong-list",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.dufFfbtBlF6lFcIHZS-oKZSfKs1i-Pzf97czGDGtt2nzaP4uvWieBUmQqD7cuyv_JZ2pgp2GgiJnDWARcdygDw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z",
+          "holderProvided": true,
+          "maxAgeMs": 3600000
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "list",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "extra-stapled-invalid-proof",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QEZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z",
+          "holderProvided": true,
+          "maxAgeMs": 3600000
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "list-proof",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "extra-revocation-cleared",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNRQVEwQUFBd0NJTzFmMmh6X0lBSUpBQUFBQUFBQUFBQUFBQURmVkFFQUFBREFPUU5RZGI1Z0FFQUFBQSJ9fQ.ce-MYYgOB5kteYFuVmulghuETs0lcEwCc-A-C-9ENmrG4NTARIKxqfNbqsiDNDY2hYwzrYVSaFTiDWDshCm7BQ",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z",
+          "rememberRevocation": true
+        },
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:01:00Z",
+          "rememberRevocation": true
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        },
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-bit-order-0",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiIwIiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMifSx7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80Izk0NTY3IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3RFbnRyeSIsInN0YXR1c1B1cnBvc2UiOiJzdXNwZW5zaW9uIiwic3RhdHVzTGlzdEluZGV4IjoiOTQ1NjciLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCJ9XX0.dxbShiF9RPiLJLHRhQVUy0q5ecax9rdrYwbNgU9Z1UN44pbjGmsuBEdxQJpR5aaqvcfjlYdVNVi3hQpdxGnbDw",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCSVFFQUFBQUNJS2M3M1JrV29BRUFBQUFBQUFBQUFBQUFBQUFBQUFEZUJ1UlpRMmNBUUFBQSJ9fQ.L20Ro5vm6-h5F4FhMmGKODTgOQYDRCysojDvPXQJxDG4OAK-sXiypKXPQQqlYRPBVrSDY6I3dk6n7rjfqusUBA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-bit-order-7",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMifSx7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80Izk0NTY3IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3RFbnRyeSIsInN0YXR1c1B1cnBvc2UiOiJzdXNwZW5zaW9uIiwic3RhdHVzTGlzdEluZGV4IjoiOTQ1NjciLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCJ9XX0.fMi5GfVzyhjXOW9FHBLEj1Fh1gNdJ51fNdoGGNzQVU5tW7Ay4P-1fjdseR9HsI_oQdwxSCav24pFR2K-mHs_AA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCSVFFQUFBQUNJUDFfMmhrV29BRUFBQUFBQUFBQUFBQUFBQUFBQUFEZUJqbjd4VFlBUUFBQSJ9fQ.tm7Dh3ZUaLRnxZH_r9GJViQE8voPk9eAc1zBciOUgXPgV_Y02XxGNDSdHm-XwEgWLGZqReEd5AW83Bwb9UbJDw",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-bit-order-8",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI4Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMifSx7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80Izk0NTY3IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3RFbnRyeSIsInN0YXR1c1B1cnBvc2UiOiJzdXNwZW5zaW9uIiwic3RhdHVzTGlzdEluZGV4IjoiOTQ1NjciLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCJ9XX0.QXD728AFvM9waPjy1X0LZUkWr5VFK1lRQA9Y4j0XfR-xChOFxNkQfCplN8AbdHSFOHcSlgQI0y4cSEMgKOGMCQ",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCSVFFQUFBQUNJS2M3M1JrV0lBMEFBQUFBQUFBQUFBQUFBQUFBQUFCd05qSWxxTEFBUUFBQSJ9fQ.9EI9xD4NXiLGYi_ereJwHiXhibqKIpWn8lryYvSaGzaA1H8zlCCmYLhS_FoxnyRwnx8IPKE6BbPaqGD_eVdGAw",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-bit-order-131071",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiIxMzEwNzEiLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyJ9LHsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In1dfQ.VrVwVHSOkNdePv-0j2T-3VWDpSXFhxncZ3BizlWfihFhlbpU7hq-Ftae51HgCQW8CuGVoKj1jo7VBvfevWB2Cg",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCSVFFQUFBQUNJUDFfMmhrV0lBRUFBQUFBQUFBQUFBQUFBQUFBQUFET09oRGlVOXdBUUFBQSJ9fQ.19x3dyWw9D-fB8fTRTBNzrA0gkuxIq0Fuos2qJJIH9w7_X3-0fnMfZn4nLKPz6EoLpcspCGwyRVZNW06kfH7DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": true,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "revoked",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-invalid-trust-signature",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tdUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "proof",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-list-type-substring",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IlRSVVNURUQifSwiY3JlZGVudGlhbFN0YXR1cyI6W3siaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIn0seyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3N1c3BlbnNpb24vNCM5NDU2NyIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0RW50cnkiLCJzdGF0dXNQdXJwb3NlIjoic3VzcGVuc2lvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQifV19.tNUgNVuvO_dSyUnYccI7vrwjD_xsmHufLHh_Na1ByHpZkrwSJPtn67ZQpzH2_-n2hCHcO_4BqE8YDFnsAH3xAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjoiTm90Qml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiLCJpc3N1ZXIiOiJodHRwczovL2lzc3Vlci5leGFtcGxlIiwidmFsaWRGcm9tIjoiMjAyNi0wOS0yOVQxMTowMDowMFoiLCJ2YWxpZFVudGlsIjoiMjAyNi0wOS0yOVQxMzowMDowMFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyNsaXN0IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3QiLCJzdGF0dXNQdXJwb3NlIjoicmV2b2NhdGlvbiIsImVuY29kZWRMaXN0IjoidUg0c0lBQUFBQUFBQ0EtM0JNUUVBQUFEQ29QVlBiUXdmb0FBQUFBQUFBQUFBQUFBQUFBQUFBSUMzQVliU1ZLc0FRQUFBIn19.__AG3UfJkxR1rGVeWdHB1zi5EOy0uQ4U5wMs5BYidDZ8yYDg6k5VDa0667rhOmlpH-moTp4Jbs6-2FkoqXiMBQ",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "list",
+          "errorType": "STATUS_VERIFICATION_ERROR"
+        }
+      ]
+    },
+    {
+      "id": "extra-missing-trust-level",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIn0sImNyZWRlbnRpYWxTdGF0dXMiOlt7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIzk0NTY3IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3RFbnRyeSIsInN0YXR1c1B1cnBvc2UiOiJyZXZvY2F0aW9uIiwic3RhdHVzTGlzdEluZGV4IjoiOTQ1NjciLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyJ9LHsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In1dfQ.RLgkmZDaCJpofQyyfeCQBOPDQGFWvxnLX_QLN9Ana9XG2eQFgVdQnHO7ATiq5WB54zU3rgX5I4OwFJjBuNkeAA",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "credential-structure",
+          "errorType": null
+        }
+      ]
+    },
+    {
+      "id": "extra-unsupported-trust-level",
+      "steps": [
+        {
+          "credential": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJ1cm46dXVpZDowMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQXRwVHJ1c3RDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCJ2YWxpZEZyb20iOiIyMDI2LTA5LTI5VDExOjAwOjAwWiIsInZhbGlkVW50aWwiOiIyMDI2LTA5LTI5VDEzOjAwOjAwWiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiaHR0cHM6Ly9hZ2VudC5leGFtcGxlIiwidHJ1c3RMZXZlbCI6IkFETUlOIn0sImNyZWRlbnRpYWxTdGF0dXMiOlt7ImlkIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvcmV2b2NhdGlvbi8zIzk0NTY3IiwidHlwZSI6IkJpdHN0cmluZ1N0YXR1c0xpc3RFbnRyeSIsInN0YXR1c1B1cnBvc2UiOiJyZXZvY2F0aW9uIiwic3RhdHVzTGlzdEluZGV4IjoiOTQ1NjciLCJzdGF0dXNMaXN0Q3JlZGVudGlhbCI6Imh0dHBzOi8vYXV0aG9yaXR5LmV4YW1wbGUvc3RhdHVzL3Jldm9jYXRpb24vMyJ9LHsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9hdXRob3JpdHkuZXhhbXBsZS9zdGF0dXMvc3VzcGVuc2lvbi80In1dfQ.H3aIiAxUebos_rcIL9lRU_KfW42Ahzw7Okvn76rhmErWZe9dXb_xe9GOCMQSQ72D4nCM3zGMK3TYa4R6w9mOCw",
+          "resources": {
+            "https://authority.example/status/revocation/3": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9yZXZvY2F0aW9uLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.QUZP9124qL6YwIMLMvPLQNbw3YxRxwFv-lCUeuMunH2e7mzYVvEJfh-tC4usyn0PZ21sOf0QF8CrffZEeJh5DA",
+            "https://authority.example/status/suspension/4": "eyJhbGciOiJFZERTQSIsImtpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUva2V5cy9maXh0dXJlLWVkMjU1MTkiLCJ0eXAiOiJhdHAtc3RhdHVzLWZpeHR1cmUrandzIn0.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQml0c3RyaW5nU3RhdHVzTGlzdENyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZSIsInZhbGlkRnJvbSI6IjIwMjYtMDktMjlUMTE6MDA6MDBaIiwidmFsaWRVbnRpbCI6IjIwMjYtMDktMjlUMTM6MDA6MDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2F1dGhvcml0eS5leGFtcGxlL3N0YXR1cy9zdXNwZW5zaW9uLzQjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUNBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ.f-then44rxlQZBx3zZe9_yBsiDBi19Fopc2qFm6O9Fakw8sGOAj32jnQ6ANgyeScr-kSuxT5kyjCIl0YB8j1Bw"
+          },
+          "evaluationTime": "2026-09-29T12:00:00Z"
+        }
+      ],
+      "expected": [
+        {
+          "statusConformant": false,
+          "credentialValid": false,
+          "effectiveTrustLevel": "UNKNOWN",
+          "trustCredit": 0,
+          "policyUseAllowed": false,
+          "reason": "credential-structure",
+          "errorType": null
+        }
+      ]
+    }
+  ]
+}
