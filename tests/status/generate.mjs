@@ -63,7 +63,7 @@ const reasons={
  'status-05':'suspended','status-06':'structure','status-07':'structure','status-08':'structure',
  'status-09':'structure','status-10':'entry','status-12':'url','status-13':'retrieval',
  'status-14':'list-proof','status-15':'purpose','status-16':'list','status-17':'length',
- 'status-18':'encoding','status-19':'list-validity','status-20':'active',
+ 'status-18':'decompression','status-19':'list-validity','status-20':'active',
  'extra-stapled-stale':'freshness','extra-revocation-cleared':'revoked',
  'extra-stapled-wrong-list':'list','extra-stapled-invalid-proof':'list-proof',
  'status-13-retrieval-timeout':'retrieval-timeout',
@@ -80,12 +80,13 @@ for(const c of cases)for(let i=0;i<c.expected.length;i++){
   retrieval:'STATUS_RETRIEVAL_ERROR', 'retrieval-timeout':'STATUS_RETRIEVAL_ERROR',
   'list-proof':'STATUS_VERIFICATION_ERROR', 'list-validity':'STATUS_VERIFICATION_ERROR',
   list:'STATUS_VERIFICATION_ERROR', purpose:'STATUS_VERIFICATION_ERROR',
-  freshness:'STATUS_VERIFICATION_ERROR', encoding:'STATUS_VERIFICATION_ERROR',
+  encoding:'MALFORMED_VALUE_ERROR', decompression:'MALFORMED_VALUE_ERROR',
+  entry:'MALFORMED_VALUE_ERROR', url:'MALFORMED_VALUE_ERROR',
   length:'STATUS_LIST_LENGTH_ERROR', range:'RANGE_ERROR',
  };
  c.expected[i]={...c.expected[i],reason,errorType:expectedError[reason]??null};
 }
-const files={'public-key.json':jwk,'vectors.json':{profile:'experimental-ed25519-fixture-jws-v3',sourceCommit:'7e3a990c58c980ccb016ebaf6ce0b5163151881f',cases}};
+const files={'public-key.json':jwk,'vectors.json':{profile:'experimental-ed25519-fixture-jws-v4',sourceCommit:'7e3a990c58c980ccb016ebaf6ce0b5163151881f',cases}};
 for(const [name,data] of Object.entries(files))writeFileSync(`${root}${name}`,JSON.stringify(data,null,2)+'\n');
 writeFileSync(`${root}SHA256SUMS`,Object.entries(files).map(([name,data])=>`${createHash('sha256').update(JSON.stringify(data,null,2)+'\n').digest('hex')}  ${name}`).join('\n')+'\n');
 console.log(`Generated ${cases.length} cases`);

@@ -295,7 +295,7 @@
           <tr><td><code>status-15-purpose-mismatch</code></td><td>Only the status purpose mismatches; status bits remain clear</td><td>Verification error; fail closed</td></tr>
           <tr><td><code>status-16-wrong-list-type</code></td><td>List credential lacks BitstringStatusListCredential type</td><td>Verification error; fail closed</td></tr>
           <tr><td><code>status-17-short-list</code></td><td>Below 131072 one-bit entries, compared with an exact-minimum positive control</td><td>List length error; fail closed</td></tr>
-          <tr><td><code>status-18-corrupt-encoded-list</code></td><td>Encoded list cannot be decoded</td><td>Processing error; fail closed</td></tr>
+          <tr><td><code>status-18-corrupt-encoded-list</code></td><td>Encoded list syntax is invalid or GZIP expansion fails</td><td>MALFORMED_VALUE_ERROR; fail closed</td></tr>
           <tr><td><code>status-19-expired-list</code></td><td>List credential outside validity period</td><td>Verification error; fail closed</td></tr>
           <tr><td><code>status-20-stapled-valid-list</code></td><td>Holder provides verified list accepted under freshness policy</td><td>Same status result without issuer callback</td></tr>
         </tbody>
@@ -453,6 +453,12 @@
         Whether to define named conformance profiles (e.g. "Identity-only" vs.
         "Full ATP") is open for CG discussion.
       </p>
+    </section>
+    <section id="implementation-review" class="informative">
+      <h2>Executable review entry points</h2>
+      <p>Run the existing identity/privacy checks, the status suite in tests/status, and the grant-revocation model through scripts/check-review-evidence.py. Each retains its experimental scope. Model results are not receiver implementation evidence.</p>
+      <p>See <a href="identity-privacy-review.md">implementation evidence and open decisions</a>
+      and <a href="https://github.com/w3c-cg/atp/issues/8">the four-spec tracker</a>.</p>
     </section>
   </body>
 </html>

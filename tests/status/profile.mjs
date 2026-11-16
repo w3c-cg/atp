@@ -27,7 +27,8 @@ const errorTypes = {
   retrieval:'STATUS_RETRIEVAL_ERROR', 'retrieval-timeout':'STATUS_RETRIEVAL_ERROR',
   'list-proof':'STATUS_VERIFICATION_ERROR', 'list-validity':'STATUS_VERIFICATION_ERROR',
   list:'STATUS_VERIFICATION_ERROR', purpose:'STATUS_VERIFICATION_ERROR',
-  freshness:'STATUS_VERIFICATION_ERROR', encoding:'STATUS_VERIFICATION_ERROR',
+  encoding:'MALFORMED_VALUE_ERROR', decompression:'MALFORMED_VALUE_ERROR',
+  entry:'MALFORMED_VALUE_ERROR', url:'MALFORMED_VALUE_ERROR',
   length:'STATUS_LIST_LENGTH_ERROR', range:'RANGE_ERROR',
 };
 const fail = reason => ({statusConformant:false,credentialValid:false,effectiveTrustLevel:'UNKNOWN',trustCredit:0,policyUseAllowed:false,reason,errorType:errorTypes[reason]??null});
@@ -61,7 +62,8 @@ export function evaluate(input, publicJwk, history=new Set()) {
       if(typeof encoded!=='string'||!/^u[A-Za-z0-9_-]+$/.test(encoded)) throw Error('encoding');
       const compressed=Buffer.from(encoded.slice(1),'base64url');
       if(compressed.toString('base64url')!==encoded.slice(1)) throw Error('encoding');
-      let bytes; try { bytes=gunzipSync(compressed,{maxOutputLength:1024*1024}); } catch { throw Error('encoding'); }
+      let bytes; try { bytes=gunzipSync(compressed,{maxOutputLength:1024*1024}); }
+      catch(error) { throw Error(error.code==='ERR_BUFFER_TOO_LARGE'?'list-size-limit':'decompression'); }
       const index=BigInt(entry.statusListIndex);
       if(bytes.length<16384) throw Error('length');
       if(index>=BigInt(bytes.length)*8n) throw Error('range');
@@ -73,7 +75,7 @@ export function evaluate(input, publicJwk, history=new Set()) {
     if(bits.suspension) return deny('suspended');
     return {statusConformant:true,credentialValid:true,effectiveTrustLevel:credential.credentialSubject.trustLevel,trustCredit:1,policyUseAllowed:true,reason:'active',errorType:null};
   } catch(error) {
-    const known=['proof','issuer','credential-structure','time','validity','structure','entry','url','retrieval','retrieval-timeout','list-proof','list-validity','list','purpose','freshness','encoding','length','range'];
+    const known=['proof','issuer','credential-structure','time','validity','structure','entry','url','retrieval','retrieval-timeout','list-proof','list-validity','list','purpose','freshness','encoding','decompression','list-size-limit','length','range'];
     return fail(known.includes(error.message)?error.message:'processing');
   }
 }

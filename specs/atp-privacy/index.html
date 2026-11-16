@@ -167,5 +167,11 @@ merkleRoot = e22c3d1565d0a4fdf85286018145138a60146bba89d59e6e44cdbe7f568e5213
         proof's guarantees are unverified pending review (see above).
       </p>
     </section>
+    <section id="implementation-review" class="informative">
+      <h2>Disclosure implementation and review</h2>
+      <p>The candidate disclosure runner uses sorted ASCII keys and zero-based indices. The existing illustrative indices and root must not be used as interoperable fixtures until encoding, index convention and authenticated root binding are selected.</p>
+      <p>See <a href="../atp-conformance/identity-privacy-review.md">implementation evidence and open decisions</a>
+      and <a href="https://github.com/w3c-cg/atp/issues/8">the four-spec tracker</a>.</p>
+    </section>
   </body>
 </html>

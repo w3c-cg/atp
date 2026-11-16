@@ -308,7 +308,12 @@
           For a failure classified by [[VC-BSL]], a verifier MUST record the
           applicable error type. An ATP-only structural failure outside the
           status-list algorithm MUST be distinguishable from a retrieval or
-          verification failure. A verifier MAY record a finer diagnostic reason.
+          verification failure. A verifier MAY record a finer diagnostic reason. Malformed status entry
+          values, invalid encoded-list syntax and GZIP expansion failures use
+          <code>MALFORMED_VALUE_ERROR</code>; encoding and decompression MAY
+          remain separate diagnostic sub-reasons. A well-formed out-of-range
+          index uses <code>RANGE_ERROR</code>. ATP-only structural and freshness
+          failures MUST remain distinguishable from proof failures.
         </p>
         <p class="ednote">
           A bounded reuse policy for verified copies is proposed for review.
@@ -343,6 +348,25 @@
           Ed25519/ML-DSA-65 requirement in the did:atp specification applies
           to DID Documents. A separate issue can define a consistent
           credential-securing profile across both credential types.
+        </p>
+        <p class="ednote" title="Member dispositions: proposed completion profile">
+          Paul Ashley's <a href="https://github.com/w3c-cg/atp/pull/6#issuecomment-6903889365">review</a>
+          supports required hybrid verification with explicit status-issuer
+          authorization. Same-issuer-only is the proposed initial profile;
+          delegated status publication needs a defined authorization check.
+          Both components must resolve to keys controlled by the authorized
+          status issuer. Exact suites, signed bytes and key encoding remain open.
+          Bounded reuse is proposed to require signed validUntil and a maximum
+          validity duration, original receipt age without resets, and a local
+          validFrom high-water mark per list. A high-water mark cannot establish
+          global order, detect equal-time conflicting versions, or survive its
+          own rollback without additional protection. Signed expiry bounds
+          replay duration but does not prove the newest version was presented.
+          Holder delivery must not manufacture receipt-age provenance. Profile
+          parameter values, persistence rules and equal-time handling need review.
+          Production audit retention should use a declared window and list-level
+          identifiers/digests, avoiding unnecessary agent/index correlation.
+          These amendments remain review proposals, not recorded CG consensus.
         </p>
       </section>
     </section>

@@ -23,3 +23,14 @@ Bitstring Status List error type. The case for optional remembered revocation
 enables that mode explicitly. The holder-provided maximum age in these
 fixtures is experimental. It does not implement verified-copy caching or its
 agreed age origin, TTL behavior, provenance, or live HTTP semantics.
+
+## Proposed v4 error revision
+
+Implements Paul Ashley's D3 review at PR #6 comment 6903889365. Existing signed
+credential/list bytes are preserved. Expected errors change for malformed entry,
+URL and encoded-list values; GZIP failure has the diagnostic `decompression`.
+ATP-only freshness errors retain their reason and no BSL proof-error label.
+`errors.test.mjs` signs additional controls with the public test-only fixture key.
+The existing experimental 1 MiB expansion guard now reports `list-size-limit`,
+not a signature failure. This value is a local fixture limit, not adopted ATP policy.
+The generator is kept consistent; checked-in bytes remain the reference.

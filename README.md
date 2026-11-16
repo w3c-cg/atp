@@ -40,10 +40,28 @@ asynchronous review; there is no need to wait for a meeting to comment.
 
 ## Implementation status
 
-These specifications are backed by a reference implementation and a conformance test
-suite. The implementation is being finalized for public review and will be linked here
-once it is ready; until then, the specifications above stand on their own (the did:atp
-spec ships with its own published test vectors).
+Contributor review code is available for all four workstreams. Run the combined
+checks with Node 24 and Python 3 (no package installation required):
+
+```sh
+python3 -I scripts/check-review-evidence.py > review-results.json
+```
+
+The CI workflow runs the same command and retains its report. A passing report
+checks the included contributor code; it does not establish independent
+interoperability, CG approval, or complete-profile conformance.
+
+| Workstream | Runnable material | Remaining gate |
+|---|---|---|
+| Identity | `specs/atp-conformance/identity-review.mjs` | Selected DID-document envelope/signed bytes, resolver and lifecycle evidence |
+| Credentials | `tests/status/run.mjs` and Node tests | Hybrid proof profile, cache/issuer decisions, independent adapter |
+| Privacy | `specs/atp-conformance/privacy-review.py` | Selected encoding and authenticated root, independent review |
+| Conformance | `specs/atp-conformance/grant_revocation_model.py` | Agreed action profile and signed live implementation runs |
+
+See [member review dispositions](specs/atp-conformance/member-dispositions.md)
+and [tracker #8](https://github.com/w3c-cg/atp/issues/8). The evidence originally
+submitted in PRs #6, #9 and #10 is reused here; those PRs are not represented as
+approved or remotely merged by this integration branch.
 
 ## License
 

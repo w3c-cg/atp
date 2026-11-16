@@ -1,5 +1,5 @@
 {
-  "profile": "experimental-ed25519-fixture-jws-v3",
+  "profile": "experimental-ed25519-fixture-jws-v4",
   "adapter": "author-reference",
   "independentReproduction": false,
   "passed": 41,
@@ -184,7 +184,7 @@
         "trustCredit": 0,
         "policyUseAllowed": false,
         "reason": "entry",
-        "errorType": null
+        "errorType": "MALFORMED_VALUE_ERROR"
       }
     },
     {
@@ -198,7 +198,7 @@
         "trustCredit": 0,
         "policyUseAllowed": false,
         "reason": "entry",
-        "errorType": null
+        "errorType": "MALFORMED_VALUE_ERROR"
       }
     },
     {
@@ -212,7 +212,7 @@
         "trustCredit": 0,
         "policyUseAllowed": false,
         "reason": "entry",
-        "errorType": null
+        "errorType": "MALFORMED_VALUE_ERROR"
       }
     },
     {
@@ -226,7 +226,7 @@
         "trustCredit": 0,
         "policyUseAllowed": false,
         "reason": "entry",
-        "errorType": null
+        "errorType": "MALFORMED_VALUE_ERROR"
       }
     },
     {
@@ -268,7 +268,7 @@
         "trustCredit": 0,
         "policyUseAllowed": false,
         "reason": "url",
-        "errorType": null
+        "errorType": "MALFORMED_VALUE_ERROR"
       }
     },
     {
@@ -365,8 +365,8 @@
         "effectiveTrustLevel": "UNKNOWN",
         "trustCredit": 0,
         "policyUseAllowed": false,
-        "reason": "encoding",
-        "errorType": "STATUS_VERIFICATION_ERROR"
+        "reason": "decompression",
+        "errorType": "MALFORMED_VALUE_ERROR"
       }
     },
     {
@@ -408,7 +408,7 @@
         "trustCredit": 0,
         "policyUseAllowed": false,
         "reason": "freshness",
-        "errorType": "STATUS_VERIFICATION_ERROR"
+        "errorType": null
       }
     },
     {
