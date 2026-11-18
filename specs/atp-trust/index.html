@@ -235,7 +235,7 @@
         The <code>credentialSubject</code> MUST identify the agent
         (<code>id</code>) and MUST carry a <code>trustLevel</code>; it MAY carry
         a <code>trustScore</code> and an <code>evaluatedAt</code> timestamp. The
-        credential MUST carry an <code>expirationDate</code>.
+        credential MUST carry a <code>validUntil</code>.
       </p>
       <pre class="example" title="ATP Trust Credential (shape)">
 {
@@ -243,7 +243,7 @@
   "type": ["VerifiableCredential", "AtpTrustCredential"],
   "issuer": "did:atp:authority.example.com:e1_...:pq1_...",
   "validFrom": "2026-06-26T00:00:00Z",
-  "expirationDate": "2026-09-26T00:00:00Z",
+  "validUntil": "2026-09-26T00:00:00Z",
   "credentialStatus": [{
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
@@ -298,7 +298,8 @@
         <p>
           If either entry is missing or malformed, or if validation of either
           entry fails, including retrieval, proof-verification,
-          purpose-mismatch, list-length, decoding, or range errors, the
+          purpose-mismatch, list-length, decoding, range, or configured
+          expanded-size-limit errors, the
           ATP Trust Credential MUST be treated as unverifiable, MUST contribute
           zero trust, and its effective <code>trustLevel</code> MUST be
           <code>UNKNOWN</code>. A relying party MUST NOT use its attested
@@ -347,26 +348,52 @@
           Credentials and their status-list credentials. The hybrid
           Ed25519/ML-DSA-65 requirement in the did:atp specification applies
           to DID Documents. A separate issue can define a consistent
-          credential-securing profile across both credential types.
+          credential-securing profile across both credential types. The
+          <a href="https://github.com/w3c-cg/atp/pull/6#issuecomment-6872712229">D1
+          Data Integrity proof-set candidate</a> proposes the same hybrid profile
+          for the Trust Credential and each referenced status-list credential,
+          with both required components verified. This candidate does not yet
+          pin interoperable suite identifiers or the exact secured bytes.
         </p>
         <p class="ednote" title="Member dispositions: proposed completion profile">
-          Paul Ashley's <a href="https://github.com/w3c-cg/atp/pull/6#issuecomment-6903889365">review</a>
+          Paul Ashley's <a href="https://github.com/w3c-cg/atp/pull/11#issuecomment-6909300990">follow-up review</a>
           supports required hybrid verification with explicit status-issuer
-          authorization. Same-issuer-only is the proposed initial profile;
-          delegated status publication needs a defined authorization check.
-          Both components must resolve to keys controlled by the authorized
-          status issuer. Exact suites, signed bytes and key encoding remain open.
-          Bounded reuse is proposed to require signed validUntil and a maximum
-          validity duration, original receipt age without resets, and a local
-          validFrom high-water mark per list. A high-water mark cannot establish
-          global order, detect equal-time conflicting versions, or survive its
-          own rollback without additional protection. Signed expiry bounds
-          replay duration but does not prove the newest version was presented.
-          Holder delivery must not manufacture receipt-age provenance. Profile
-          parameter values, persistence rules and equal-time handling need review.
+          authorization. Same-issuer-only is the proposed initial profile.
+          For delegated status publication, the proposed authorization mechanism
+          is the existing <a href="#authorization-via-trqp">Issuer Authorization / TRQP</a>
+          procedure, with an explicit status-publication permission; a generic
+          credential-issuance authorization alone must not imply that permission.
+          Both proof components must resolve to keys controlled by the authorized
+          status issuer. Exact suites, signed bytes, permission identifiers and
+          key encoding remain open.
+          Bounded reuse is proposed to require signed <code>validUntil</code>,
+          a maximum validity duration, original receipt age without resets for
+          directly retrieved copies, and a local <code>validFrom</code> high-water
+          mark per list. For holder-delivered copies, Paul proposes measuring
+          age from signed <code>validFrom</code>, rather than presentation time.
+          Such an age bound does not prove publication time or latest status;
+          future-dated values and permitted clock skew need explicit handling.
+          Paul also proposes that an issuer must not publish different content
+          for the same list ID and <code>validFrom</code>, and a verifier seeing
+          such a conflict fail closed as a verification failure. The profile
+          must define the content/digest comparison so re-signing identical
+          content is not mistaken for a semantic conflict.
+          A high-water mark cannot establish global order or survive its own
+          rollback without additional protection. Persistence and backup rollback
+          require documented security considerations. Parameter values and the
+          conflict/holder-age rules remain proposals for group review.
           Production audit retention should use a declared window and list-level
           identifiers/digests, avoiding unnecessary agent/index correlation.
-          These amendments remain review proposals, not recorded CG consensus.
+        </p>
+        <p class="ednote" title="Open proposal: maximum expanded status-list size">
+          An ATP-wide maximum expanded size and corresponding profile parameter
+          remain open. The experimental evaluator's 1 MiB guard is a local test
+          value, not an adopted ATP maximum. Exceeding a configured limit reports
+          <code>list-size-limit</code> and invokes the fail-closed handling above:
+          unverifiable, effective <code>UNKNOWN</code>, zero trust and no policy
+          use. It is a resource-limit diagnostic, not evidence of a bad signature
+          or malformed compressed content. Implementations must bound expansion
+          while decompressing rather than allocate unbounded data first.
         </p>
       </section>
     </section>

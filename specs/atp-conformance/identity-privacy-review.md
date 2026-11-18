@@ -73,3 +73,12 @@ callback/policy experiment and should be linked, not resubmitted.
 
 Larry Lewis  
 Chair, W3C Agent Trust Protocol Community Group
+
+## Independent identifier subset result (external review input)
+
+Tetsuroh Hori published a separately implemented reader and reported 11/11 v2
+matches for the pinned vectors. See [the scoped evidence record](identity-independent-review.md).
+This external result is distinct from the contributor-run primitive signature
+checks above. Neither result establishes complete-profile interoperability.
+His proposed additions remain external review input pending the contribution
+process; no external reader or proposed vector file is incorporated here.

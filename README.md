@@ -41,13 +41,18 @@ asynchronous review; there is no need to wait for a meeting to comment.
 ## Implementation status
 
 Contributor review code is available for all four workstreams. Run the combined
-checks with Node 24 and Python 3 (no package installation required):
+checks with Python 3 and a Node 24+ runtime supporting ML-DSA-65:
 
 ```sh
 python3 -I scripts/check-review-evidence.py > review-results.json
 ```
 
-The CI workflow runs the same command and retains its report. A passing report
+The runner probes Node for the required signing operation. If the active Node
+is unsuitable, it selects node@24.22.1 through npm (which may download the
+runtime into its cache). All Node checks use that executable. An optional
+ATP_REVIEW_NODE absolute executable path selects a runtime explicitly. Runtime
+setup errors and failed tests remain failures and are summarized on stderr.
+The CI workflow tests fallback/failure reporting, runs the same command and retains its report. A passing report
 checks the included contributor code; it does not establish independent
 interoperability, CG approval, or complete-profile conformance.
 
