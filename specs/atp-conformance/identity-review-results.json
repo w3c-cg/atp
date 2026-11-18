@@ -1,0 +1,26 @@
+{
+  "node": "v24.22.1",
+  "publishedVectors": [
+    "root did:atp (domain only)",
+    "single path segment",
+    "multi-segment path",
+    "pinned KAT: master=0x09*32, peer A",
+    "different peer (unlinkable)",
+    "explicit salt rotates the derivation",
+    "uppercase domain (must be lowercase)",
+    "path DID missing the pq1_ binding segment",
+    "e1_/pq1_ binding segments in the wrong order",
+    "truncated binding fingerprints",
+    "not a did:atp identifier"
+  ],
+  "primitiveProofControls": [
+    "dual-valid",
+    "missing-classical",
+    "missing-pq",
+    "bad-classical",
+    "bad-pq",
+    "wrong-classical-key",
+    "wrong-pq-key",
+    "changed-challenge"
+  ]
+}

@@ -156,6 +156,23 @@ atp-path-did = "did:atp:" domain-name 1*(":" path-segment)
                  ":" e1-fingerprint ":" pq1-fingerprint
 atp-did      = atp-root-did / atp-path-did
       </pre>
+      <p class="ednote" title="Independent review: domain and path syntax decisions">
+        <a href="https://github.com/w3c-cg/atp/issues/8#issuecomment-6931778426">Independent review input</a>
+        identified two unresolved details. The existing vectors reject uppercase
+        hostnames, but this document does not define <code>domain-name</code> or
+        its canonicalization. A proposed clarification is an explicit lowercase
+        host representation; the exact did:wba mapping, IDNA and any port form
+        need a pinned definition and boundary tests before adoption. DNS
+        case-insensitivity alone does not specify DID-string canonicalization.
+        The current ABNF permits a path segment beginning with <code>e1_</code>
+        or <code>pq1_</code>. One candidate keeps that grammar and treats only
+        the final two segments as the binding fingerprints; the alternative
+        reserves those prefixes throughout the path. No prefix-reservation rule
+        is adopted here, and a reader that rejects such earlier path segments
+        imposes an additional restriction beyond the current grammar.
+        See <a href="../atp-conformance/identity-independent-review.md">the
+        evidence record and proposed review tasks</a>.
+      </p>
       <p>Example (from the proof-of-concept, abbreviated):</p>
       <pre>
 did:atp:agents.example.com:billing:e1_vW7u8CVMklXkz...:pq1_-MT7q-QasC380...
@@ -497,6 +514,12 @@ pairwise-seg  = "p_" lowerhex(pseudonym)
         <li>Liaison sign-off with the AI Agent Protocol CG on the two-segment binding approach.</li>
         <li>Monitoring of the W3C quantum-safe cryptosuite work against the <a href="#reelevation">re-elevation triggers</a>.</li>
       </ul>
+    </section>
+    <section id="implementation-review" class="informative">
+      <h2>Identity implementation and review</h2>
+      <p>The published reproduction runner exercises DID derivation and primitive signatures. The DID-document envelope and signed bytes remain open; these checks do not establish resolution or request-proof conformance.</p>
+      <p>See <a href="../atp-conformance/identity-privacy-review.md">implementation evidence and open decisions</a>
+      and <a href="https://github.com/w3c-cg/atp/issues/8">the four-spec tracker</a>.</p>
     </section>
   </body>
 </html>

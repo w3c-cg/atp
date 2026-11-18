@@ -235,7 +235,7 @@
         The <code>credentialSubject</code> MUST identify the agent
         (<code>id</code>) and MUST carry a <code>trustLevel</code>; it MAY carry
         a <code>trustScore</code> and an <code>evaluatedAt</code> timestamp. The
-        credential MUST carry an <code>expirationDate</code>.
+        credential MUST carry a <code>validUntil</code>.
       </p>
       <pre class="example" title="ATP Trust Credential (shape)">
 {
@@ -243,7 +243,18 @@
   "type": ["VerifiableCredential", "AtpTrustCredential"],
   "issuer": "did:atp:authority.example.com:e1_...:pq1_...",
   "validFrom": "2026-06-26T00:00:00Z",
-  "expirationDate": "2026-09-26T00:00:00Z",
+  "validUntil": "2026-09-26T00:00:00Z",
+  "credentialStatus": [{
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://authority.example/status/revocation/3"
+  }, {
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "suspension",
+    "statusListIndex": "23452",
+    "statusListCredential": "https://authority.example/status/suspension/4"
+  }],
   "credentialSubject": {
     "id": "did:atp:agents.example.com:...",
     "trustLevel": "TRUSTED",
@@ -262,56 +273,129 @@
         MUST succeed. A valid presented credential lets a relying party gate on
         attested trust without querying the issuer's scoring engine directly.
       </p>
-      <p>
-        An ATP Trust Credential MUST carry a <code>credentialStatus</code>
-        property using <code>BitstringStatusList</code> [[VC-BSL]] as the
-        normative default status mechanism. This reuses the
-        <code>credentialStatus</code> extension point already defined by the
-        VCDM v2.0 data model [[VC-DATA-MODEL]] in which the credential is
-        expressed, requiring no additional <code>@context</code>,
-        serialization, or proof model.
-      </p>
-      <p>
-        Because a trust level is time-decaying evidence rather than a permanent
-        fact, a credential needs to be both permanently withdrawable and
-        temporarily withheld. <code>credentialStatus</code> MUST therefore be an
-        array containing:
-      </p>
-      <ul>
-        <li>exactly one entry with <code>statusPurpose: "revocation"</code>, and</li>
-        <li>exactly one entry with <code>statusPurpose: "suspension"</code>.</li>
-      </ul>
-      <p>
-        Each entry MUST conform to <code>BitstringStatusListEntry</code> and
-        MUST carry <code>statusListIndex</code> and
-        <code>statusListCredential</code>.
-      </p>
-      <p>
-        A relying party verifying a presented ATP Trust Credential MUST resolve
-        and check both status list entries as part of the verification
-        requirement above (signature, expiry, revocation, schema):
-      </p>
-      <ul>
-        <li>
-          If the <code>revocation</code> bit is set, the credential MUST be
-          treated as invalid.
-        </li>
-        <li>
-          If the <code>suspension</code> bit is set, the relying party MUST NOT
-          map the credential's <code>trustLevel</code> into a policy decision,
-          and SHOULD treat the agent's attested trust as <code>UNKNOWN</code>
-          pending re-scoring. An issuer MAY clear the suspension bit and restore
-          the attested <code>trustLevel</code> without reissuing the credential.
-        </li>
-      </ul>
-      <p>
-        This design intentionally avoids per-credential status endpoints
-        (OCSP-style checks): because many credentials share one status list and
-        a relying party inspects it locally, the issuer does not learn
-        <em>which</em> credential, agent, or relying party is being checked.
-        This is consistent with this specification's privacy-first presentation
-        posture (<a href="../atp-privacy/">ATP Privacy-First Interaction</a>).
-      </p>
+      <section id="credential-status" class="normative">
+        <h3>Credential Status: Revocation and Suspension</h3>
+        <p>
+          An ATP Trust Credential MUST contain a <code>credentialStatus</code>
+          property whose value is an array containing exactly two entries:
+          exactly one <code>revocation</code> entry and exactly one
+          <code>suspension</code> entry. Each entry MUST conform to
+          <code>BitstringStatusListEntry</code> as defined by [[VC-BSL]].
+          In particular, its <code>type</code> MUST be
+          <code>BitstringStatusListEntry</code>, its
+          <code>statusListIndex</code> MUST be a base-10 string representing
+          a non-negative integer, and its <code>statusListCredential</code>
+          MUST be a URL. The entries MAY reference different lists.
+        </p>
+        <p>
+          A relying party MUST validate both entries using the validation
+          algorithm in [[VC-BSL]], including retrieving and verifying the
+          corresponding <code>BitstringStatusListCredential</code>, checking
+          the status purpose, decoding the list, enforcing its minimum length,
+          and reading the indexed status value. Validation MUST complete
+          before the attested <code>trustLevel</code> is used in a policy decision.
+        </p>
+        <p>
+          If either entry is missing or malformed, or if validation of either
+          entry fails, including retrieval, proof-verification,
+          purpose-mismatch, list-length, decoding, range, or configured
+          expanded-size-limit errors, the
+          ATP Trust Credential MUST be treated as unverifiable, MUST contribute
+          zero trust, and its effective <code>trustLevel</code> MUST be
+          <code>UNKNOWN</code>. A relying party MUST NOT use its attested
+          <code>trustLevel</code> to authorize an action.
+        </p>
+        <p>
+          For a failure classified by [[VC-BSL]], a verifier MUST record the
+          applicable error type. An ATP-only structural failure outside the
+          status-list algorithm MUST be distinguishable from a retrieval or
+          verification failure. A verifier MAY record a finer diagnostic reason. Malformed status entry
+          values, invalid encoded-list syntax and GZIP expansion failures use
+          <code>MALFORMED_VALUE_ERROR</code>; encoding and decompression MAY
+          remain separate diagnostic sub-reasons. A well-formed out-of-range
+          index uses <code>RANGE_ERROR</code>. ATP-only structural and freshness
+          failures MUST remain distinguishable from proof failures.
+        </p>
+        <p class="ednote">
+          A bounded reuse policy for verified copies is proposed for review.
+          Its age origin, maximum age, treatment of <code>ttl</code>, skew, and
+          evidence requirements must be specified before claiming cache
+          interoperability. Validity dates do not establish publication order.
+        </p>
+        <ul>
+          <li>If the validated <code>revocation</code> status is set, the
+            credential MUST be treated as invalid. An issuer MUST NOT clear a
+            revocation status once set. A relying party that has previously
+            observed revocation MAY retain that decision. A stateless relying
+            party cannot infer a previously set bit from a later unset list.</li>
+          <li>If the validated <code>suspension</code> status is set, the
+            relying party MUST treat the effective <code>trustLevel</code> as
+            <code>UNKNOWN</code>, MUST credit zero trust for this credential,
+            and MUST NOT use the attested level to authorize an action.
+            An issuer MAY later clear suspension; after both entries are
+            successfully revalidated and unset, the relying party MAY again
+            use the attested level without reissuance, subject to all other
+            verification requirements.</li>
+        </ul>
+        <p>
+          Issuers and relying parties SHOULD use caching, content distribution,
+          or holder-provided status-list credentials where consistent with
+          their freshness policy, to avoid per-presentation callbacks to the
+          issuer and reduce correlation of verification activity.
+        </p>
+        <p class="note" title="Credential securing profile">
+          ATP does not yet define a protocol-wide securing profile for Trust
+          Credentials and their status-list credentials. The hybrid
+          Ed25519/ML-DSA-65 requirement in the did:atp specification applies
+          to DID Documents. A separate issue can define a consistent
+          credential-securing profile across both credential types. The
+          <a href="https://github.com/w3c-cg/atp/pull/6#issuecomment-6872712229">D1
+          Data Integrity proof-set candidate</a> proposes the same hybrid profile
+          for the Trust Credential and each referenced status-list credential,
+          with both required components verified. This candidate does not yet
+          pin interoperable suite identifiers or the exact secured bytes.
+        </p>
+        <p class="ednote" title="Member dispositions: proposed completion profile">
+          Paul Ashley's <a href="https://github.com/w3c-cg/atp/pull/11#issuecomment-6909300990">follow-up review</a>
+          supports required hybrid verification with explicit status-issuer
+          authorization. Same-issuer-only is the proposed initial profile.
+          For delegated status publication, the proposed authorization mechanism
+          is the existing <a href="#authorization-via-trqp">Issuer Authorization / TRQP</a>
+          procedure, with an explicit status-publication permission; a generic
+          credential-issuance authorization alone must not imply that permission.
+          Both proof components must resolve to keys controlled by the authorized
+          status issuer. Exact suites, signed bytes, permission identifiers and
+          key encoding remain open.
+          Bounded reuse is proposed to require signed <code>validUntil</code>,
+          a maximum validity duration, original receipt age without resets for
+          directly retrieved copies, and a local <code>validFrom</code> high-water
+          mark per list. For holder-delivered copies, Paul proposes measuring
+          age from signed <code>validFrom</code>, rather than presentation time.
+          Such an age bound does not prove publication time or latest status;
+          future-dated values and permitted clock skew need explicit handling.
+          Paul also proposes that an issuer must not publish different content
+          for the same list ID and <code>validFrom</code>, and a verifier seeing
+          such a conflict fail closed as a verification failure. The profile
+          must define the content/digest comparison so re-signing identical
+          content is not mistaken for a semantic conflict.
+          A high-water mark cannot establish global order or survive its own
+          rollback without additional protection. Persistence and backup rollback
+          require documented security considerations. Parameter values and the
+          conflict/holder-age rules remain proposals for group review.
+          Production audit retention should use a declared window and list-level
+          identifiers/digests, avoiding unnecessary agent/index correlation.
+        </p>
+        <p class="ednote" title="Open proposal: maximum expanded status-list size">
+          An ATP-wide maximum expanded size and corresponding profile parameter
+          remain open. The experimental evaluator's 1 MiB guard is a local test
+          value, not an adopted ATP maximum. Exceeding a configured limit reports
+          <code>list-size-limit</code> and invokes the fail-closed handling above:
+          unverifiable, effective <code>UNKNOWN</code>, zero trust and no policy
+          use. It is a resource-limit diagnostic, not evidence of a bad signature
+          or malformed compressed content. Implementations must bound expansion
+          while decompressing rather than allocate unbounded data first.
+        </p>
+      </section>
     </section>
 
     <section id="issuer-authorization" class="normative">
@@ -626,3 +710,4 @@ Content-Type: application/json
     </section>
   </body>
 </html>
+
