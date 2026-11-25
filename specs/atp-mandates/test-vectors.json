@@ -1,0 +1,125 @@
+{
+  "status": "conceptual scenarios; not executable or normative vectors",
+  "cases": [
+    {
+      "id": "MCT-001",
+      "scenario": "Valid authority and action",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "MCT-002",
+      "scenario": "Invalid signature",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-003",
+      "scenario": "Unauthorized issuer",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-004",
+      "scenario": "Wrong holder proof",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-005",
+      "scenario": "Expired",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-006",
+      "scenario": "Revoked",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-007",
+      "scenario": "Paused",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-008",
+      "scenario": "Valid resume",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "MCT-009",
+      "scenario": "Wrong resource",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-010",
+      "scenario": "Outside scope",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-011",
+      "scenario": "Replay",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-012",
+      "scenario": "Wrong audience",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-013",
+      "scenario": "Child exceeds parent",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-014",
+      "scenario": "Redelegation prohibited",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-015",
+      "scenario": "Revoked ancestor",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-016",
+      "scenario": "Status unavailable",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-017",
+      "scenario": "Approval missing",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-018",
+      "scenario": "Enforcement bypass",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "MCT-019",
+      "scenario": "Unknown critical constraint",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-020",
+      "scenario": "In-flight revocation",
+      "expected": "PROFILE_TEST"
+    },
+    {
+      "id": "MCT-021",
+      "scenario": "Outcome unconfirmed",
+      "expected": "UNKNOWN_OUTCOME"
+    },
+    {
+      "id": "MCT-022",
+      "scenario": "Restrictive local policy",
+      "expected": "DENY"
+    },
+    {
+      "id": "MCT-023",
+      "scenario": "Concurrent budget excess",
+      "expected": "DENY_EXCESS"
+    },
+    {
+      "id": "MCT-024",
+      "scenario": "Unknown schema version",
+      "expected": "DENY"
+    }
+  ]
+}
